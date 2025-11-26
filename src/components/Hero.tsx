@@ -1,13 +1,15 @@
 import { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { Button } from './ui/button';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ChevronRight, Terminal } from 'lucide-react';
 
 export const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -35,53 +37,72 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
+    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden pt-20">
       <div className="max-w-7xl mx-auto text-center z-10">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/50 border border-primary/20 mb-8 backdrop-blur-sm">
-          <Sparkles className="w-4 h-4 text-primary" />
-          <span className="text-sm text-muted-foreground">Powered by Advanced AI Technology</span>
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded border border-primary/30 mb-8 backdrop-blur-sm bg-card/50">
+          <Terminal className="w-4 h-4 text-primary" />
+          <span className="text-xs text-primary font-mono">&gt; INITIALIZE_NEURAL_SYSTEM</span>
         </div>
 
         <h1
           ref={titleRef}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent leading-tight"
+          className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-primary leading-tight tracking-wider"
         >
-          Transform Your Business
+          TRANSFORM REALITY
           <br />
-          With AI Intelligence
+          WITH AI NEURAL SYSTEMS
         </h1>
 
-        <p
-          ref={subtitleRef}
-          className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed"
-        >
-          Harness the power of cutting-edge artificial intelligence to automate workflows,
-          gain insights, and scale your operations like never before.
-        </p>
+        <div ref={subtitleRef} className="space-y-4 mb-12">
+          <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto font-mono">
+            &gt; Deploy intelligent systems_automate complex workflows_optimize operations in microseconds.
+          </p>
+          <p className="text-sm md:text-base text-primary max-w-3xl mx-auto font-mono">
+            &gt; Eliminate_errors // Reduce_costs // Unlock_unprecedented_efficiency
+          </p>
+        </div>
 
-        <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
           <Button
             size="lg"
-            className="group relative overflow-hidden bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-lg shadow-glow"
+            onClick={() => navigate('/contact')}
+            className="group bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-sm shadow-glow font-mono tracking-wider"
           >
-            <span className="relative z-10 flex items-center gap-2">
-              Get Started
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </span>
+            <ChevronRight className="w-4 h-4 mr-2" />
+            INITIALIZE_NOW
           </Button>
 
           <Button
             size="lg"
             variant="outline"
-            className="border-primary/30 hover:bg-primary/10 hover:border-primary/50 px-8 py-6 text-lg backdrop-blur-sm"
+            onClick={() => navigate('/solutions')}
+            className="border-primary/50 text-primary hover:bg-primary/10 hover:border-primary px-8 py-6 text-sm backdrop-blur-sm font-mono tracking-wider"
           >
-            View Demo
+            <Terminal className="w-4 h-4 mr-2" />
+            EXPLORE_SYSTEMS
           </Button>
         </div>
 
-        {/* Floating elements */}
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/10 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-secondary/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
+        {/* Stats Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+          {[
+            { value: '60%', label: 'COST_REDUCTION', icon: '↓' },
+            { value: '5x', label: 'EFFICIENCY_GAIN', icon: '⚡' },
+            { value: '99.9%', label: 'ACCURACY_RATE', icon: '◎' },
+            { value: '24/7', label: 'AUTO_RUNTIME', icon: '↯' },
+          ].map((stat, index) => (
+            <div
+              key={index}
+              className="p-6 border border-primary/20 bg-card/30 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 hover:shadow-glow group"
+            >
+              <div className="text-xs text-primary mb-2 font-mono">{stat.icon}</div>
+              <div className="text-3xl md:text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">
+                {stat.value}
+              </div>
+              <div className="text-xs text-muted-foreground font-mono tracking-wider">{stat.label}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
