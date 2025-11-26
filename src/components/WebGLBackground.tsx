@@ -25,13 +25,13 @@ export const WebGLBackground = () => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     containerRef.current.appendChild(renderer.domElement);
 
-    // Create particle system
+    // Create particle system with green Matrix theme
     const particleCount = 2000;
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 
-    const color1 = new THREE.Color(0x00D9FF); // Cyan
-    const color2 = new THREE.Color(0x3B82F6); // Blue
+    const color1 = new THREE.Color(0x10B981); // Emerald green
+    const color2 = new THREE.Color(0x34D399); // Light green
 
     for (let i = 0; i < particleCount * 3; i += 3) {
       positions[i] = (Math.random() - 0.5) * 100;
@@ -59,7 +59,7 @@ export const WebGLBackground = () => {
     const particles = new THREE.Points(geometry, material);
     scene.add(particles);
 
-    // Add connecting lines
+    // Add connecting lines in green
     const lineGeometry = new THREE.BufferGeometry();
     const linePositions = new Float32Array(300 * 3);
     
@@ -72,9 +72,9 @@ export const WebGLBackground = () => {
     lineGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
 
     const lineMaterial = new THREE.LineBasicMaterial({
-      color: 0x00D9FF,
+      color: 0x10B981,
       transparent: true,
-      opacity: 0.1,
+      opacity: 0.15,
     });
 
     const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
@@ -141,7 +141,7 @@ export const WebGLBackground = () => {
     <div
       ref={containerRef}
       className="fixed inset-0 -z-10"
-      style={{ background: 'linear-gradient(180deg, hsl(220 20% 8%), hsl(220 18% 12%))' }}
+      style={{ background: '#000000' }}
     />
   );
 };
