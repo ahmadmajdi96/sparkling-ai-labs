@@ -37,15 +37,15 @@ export const CTASection = () => {
           <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-secondary/10 rounded-full blur-3xl animate-glow-pulse" style={{ animationDelay: '1s' }} />
           
           <div className="relative z-10">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
               Initialize Transformation
             </h2>
             
             <div className="space-y-2 mb-8">
-              <p className="text-base text-muted-foreground">
+              <p className="text-xl md:text-2xl text-muted-foreground">
                 Join the neural network of industry leaders transforming operations
               </p>
-              <p className="text-sm text-primary/80">
+              <p className="text-lg md:text-xl text-primary/80">
                 Begin your journey with zero-code AI automation protocol
               </p>
             </div>

@@ -46,7 +46,7 @@ export const Hero = () => {
 
         <h1
           ref={titleRef}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent leading-tight"
+          className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-8 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent leading-tight"
         >
           Transform Reality
           <br />
@@ -55,13 +55,13 @@ export const Hero = () => {
 
         <p
           ref={subtitleRef}
-          className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-4 leading-relaxed"
+          className="text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-3xl mx-auto mb-4 leading-relaxed"
         >
-          Deploy intelligent systems, automate complex workflows, optimize operations in microseconds.
+          Deploy intelligent systems_automate complex workflows_optimize operations in microseconds
         </p>
         
-        <p className="text-base text-primary/80 max-w-2xl mx-auto mb-12">
-          Eliminate errors // Reduce costs // Unlock unprecedented efficiency
+        <p className="text-lg md:text-xl text-primary/80 max-w-2xl mx-auto mb-12">
+          Eliminate_errors // Reduce_costs // Unlock_unprecedented_efficiency
         </p>
 
         <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
@@ -99,10 +99,10 @@ export const Hero = () => {
               className="p-6 rounded-lg bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-sm border border-primary/10 hover:border-primary/30 transition-all duration-300 hover:shadow-glow group"
             >
               <div className="text-2xl mb-2 opacity-50">{stat.icon}</div>
-              <div className="text-4xl md:text-5xl font-bold bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform">
+              <div className="text-5xl md:text-6xl font-bold bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform">
                 {stat.value}
               </div>
-              <div className="text-sm text-muted-foreground uppercase tracking-wider">{stat.label}</div>
+              <div className="text-sm md:text-base text-muted-foreground uppercase tracking-wider">{stat.label}</div>
             </div>
           ))}
         </div>
