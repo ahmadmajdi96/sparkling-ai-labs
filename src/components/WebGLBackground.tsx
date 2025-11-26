@@ -102,15 +102,15 @@ export const WebGLBackground = () => {
     const animate = () => {
       animationId = requestAnimationFrame(animate);
 
-      particles.rotation.y += 0.0005;
-      particles.rotation.x = mousePosition.current.y * 0.1;
-      particles.rotation.y += mousePosition.current.x * 0.05;
+      particles.rotation.y += 0.0001;
+      particles.rotation.x = mousePosition.current.y * 0.03;
+      particles.rotation.y += mousePosition.current.x * 0.01;
 
-      lines.rotation.y -= 0.0003;
-      lines.rotation.x = mousePosition.current.y * 0.05;
+      lines.rotation.y -= 0.00008;
+      lines.rotation.x = mousePosition.current.y * 0.02;
 
-      camera.position.x += (mousePosition.current.x * 5 - camera.position.x) * 0.05;
-      camera.position.y += (mousePosition.current.y * 5 - camera.position.y) * 0.05;
+      camera.position.x += (mousePosition.current.x * 3 - camera.position.x) * 0.02;
+      camera.position.y += (mousePosition.current.y * 3 - camera.position.y) * 0.02;
 
       renderer.render(scene, camera);
     };

@@ -71,7 +71,7 @@ export const NeuralAdvantages = () => {
           <div className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
             <span className="text-sm text-primary uppercase tracking-wider">System Capabilities</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
             Neural Advantages
           </h2>
         </div>
@@ -87,8 +87,8 @@ export const NeuralAdvantages = () => {
                 <div className="mb-4 inline-flex p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
                   <Icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">{advantage.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{advantage.description}</p>
+                <h3 className="text-2xl font-semibold mb-3">{advantage.title}</h3>
+                <p className="text-base text-muted-foreground leading-relaxed">{advantage.description}</p>
               </Card>
             );
           })}

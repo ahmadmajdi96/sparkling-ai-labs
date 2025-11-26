@@ -79,10 +79,10 @@ export const NeuralPortals = () => {
           <div className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
             <span className="text-sm text-primary uppercase tracking-wider">Access Portals</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
             Five Neural Portals
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-xl md:text-2xl text-muted-foreground">
             Complete platform suite for digital transformation
           </p>
         </div>
@@ -103,9 +103,9 @@ export const NeuralPortals = () => {
                   <Icon className="w-6 h-6" />
                 </div>
                 
-                <h3 className="text-xl font-bold mb-3">{portal.title}</h3>
+                <h3 className="text-2xl font-bold mb-3">{portal.title}</h3>
                 
-                <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                <p className="text-base text-muted-foreground leading-relaxed mb-6">
                   {portal.description}
                 </p>
 
