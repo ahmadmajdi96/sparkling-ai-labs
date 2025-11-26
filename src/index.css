@@ -8,52 +8,51 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Matrix/Terminal theme - Black and Green */
-    --background: 0 0% 3%;
-    --foreground: 142 76% 56%;
+    /* Dark futuristic theme */
+    --background: 220 20% 8%;
+    --foreground: 200 100% 95%;
 
-    --card: 0 0% 5%;
-    --card-foreground: 142 76% 56%;
+    --card: 220 18% 12%;
+    --card-foreground: 200 100% 95%;
 
-    --popover: 0 0% 4%;
-    --popover-foreground: 142 76% 56%;
+    --popover: 220 18% 10%;
+    --popover-foreground: 200 100% 95%;
 
-    /* Bright emerald green primary */
-    --primary: 142 76% 56%;
-    --primary-foreground: 0 0% 3%;
+    /* Electric cyan/blue primary */
+    --primary: 190 100% 50%;
+    --primary-foreground: 220 20% 8%;
     
-    /* Darker green secondary */
-    --secondary: 142 60% 35%;
-    --secondary-foreground: 142 76% 56%;
+    /* Bright electric blue */
+    --secondary: 210 100% 55%;
+    --secondary-foreground: 220 20% 8%;
 
-    --muted: 0 0% 12%;
-    --muted-foreground: 142 30% 45%;
+    --muted: 220 15% 18%;
+    --muted-foreground: 200 10% 60%;
 
-    /* Bright accent green */
-    --accent: 142 85% 65%;
-    --accent-foreground: 0 0% 3%;
+    /* Neon accent */
+    --accent: 180 100% 55%;
+    --accent-foreground: 220 20% 8%;
 
     --destructive: 0 85% 60%;
-    --destructive-foreground: 142 76% 56%;
+    --destructive-foreground: 200 100% 95%;
 
-    --border: 142 40% 15%;
-    --input: 142 40% 15%;
-    --ring: 142 76% 56%;
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 190 100% 50%;
 
-    --radius: 0.25rem;
+    --radius: 0.75rem;
 
-    /* Custom matrix colors */
-    --glow: 142 76% 56%;
-    --glow-secondary: 142 85% 65%;
-    --terminal: 142 76% 56%;
+    /* Custom tech colors */
+    --glow: 190 100% 50%;
+    --glow-secondary: 210 100% 55%;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(142 76% 56%), hsl(142 85% 65%));
-    --gradient-dark: linear-gradient(180deg, hsl(0 0% 3%), hsl(0 0% 5%));
+    --gradient-primary: linear-gradient(135deg, hsl(190 100% 50%), hsl(210 100% 55%));
+    --gradient-dark: linear-gradient(180deg, hsl(220 20% 8%), hsl(220 18% 12%));
     
     /* Shadows and glows */
-    --shadow-glow: 0 0 30px hsla(142, 76%, 56%, 0.4);
-    --shadow-glow-lg: 0 0 60px hsla(142, 76%, 56%, 0.5);
+    --shadow-glow: 0 0 30px hsla(190, 100%, 50%, 0.3);
+    --shadow-glow-lg: 0 0 60px hsla(190, 100%, 50%, 0.4);
   }
 }
 
@@ -64,14 +63,12 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Space Mono', 'Courier New', monospace;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Mono', 'Courier New', monospace;
+    font-family: 'Orbitron', sans-serif;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
   }
 }
 

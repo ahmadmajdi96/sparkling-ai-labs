@@ -31,22 +31,22 @@ export const CTASection = () => {
   return (
     <section ref={sectionRef} className="py-24 px-4 relative">
       <div className="max-w-5xl mx-auto">
-        <div className="relative rounded border border-primary/30 p-12 md:p-16 text-center overflow-hidden backdrop-blur-sm bg-card/20">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
+        <div className="relative rounded-3xl bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/20 p-12 md:p-16 text-center overflow-hidden backdrop-blur-sm">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5" />
           <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-glow-pulse" />
-          <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-glow-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-secondary/10 rounded-full blur-3xl animate-glow-pulse" style={{ animationDelay: '1s' }} />
           
           <div className="relative z-10">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-primary tracking-wider">
-              INITIALIZE TRANSFORMATION
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
+              Initialize Transformation
             </h2>
             
-            <div className="space-y-3 mb-8">
-              <p className="text-base text-muted-foreground font-mono">
-                &gt; Join_neural_network // Industry_leaders_transforming_operations
+            <div className="space-y-2 mb-8">
+              <p className="text-base text-muted-foreground">
+                Join the neural network of industry leaders transforming operations
               </p>
-              <p className="text-sm text-primary font-mono">
-                &gt; Begin_journey // Zero-code_AI_automation_protocol
+              <p className="text-sm text-primary/80">
+                Begin your journey with zero-code AI automation protocol
               </p>
             </div>
 
@@ -54,20 +54,20 @@ export const CTASection = () => {
               <Button
                 size="lg"
                 onClick={() => navigate('/contact')}
-                className="group bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-sm shadow-glow font-mono tracking-wider"
+                className="group bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-lg shadow-glow"
               >
-                SCHEDULE_DEMO
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                Schedule Demo
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
 
               <Button
                 size="lg"
                 variant="outline"
                 onClick={() => navigate('/industries')}
-                className="border-primary/50 text-primary hover:bg-primary/10 hover:border-primary px-8 py-6 text-sm backdrop-blur-sm font-mono tracking-wider"
+                className="border-primary/30 hover:bg-primary/10 hover:border-primary/50 px-8 py-6 text-lg backdrop-blur-sm"
               >
-                <Eye className="w-4 h-4 mr-2" />
-                VIEW_INDUSTRIES
+                <Eye className="w-5 h-5 mr-2" />
+                View Industries
               </Button>
             </div>
           </div>

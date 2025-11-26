@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { Button } from './ui/button';
-import { ChevronRight, Terminal } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 export const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -37,72 +37,78 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden pt-20">
+    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
       <div className="max-w-7xl mx-auto text-center z-10">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded border border-primary/30 mb-8 backdrop-blur-sm bg-card/50">
-          <Terminal className="w-4 h-4 text-primary" />
-          <span className="text-xs text-primary font-mono">&gt; INITIALIZE_NEURAL_SYSTEM</span>
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/50 border border-primary/20 mb-8 backdrop-blur-sm">
+          <Sparkles className="w-4 h-4 text-primary" />
+          <span className="text-sm text-muted-foreground">Initialize Neural System</span>
         </div>
 
         <h1
           ref={titleRef}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-primary leading-tight tracking-wider"
+          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent leading-tight"
         >
-          TRANSFORM REALITY
+          Transform Reality
           <br />
-          WITH AI NEURAL SYSTEMS
+          With AI Neural Systems
         </h1>
 
-        <div ref={subtitleRef} className="space-y-4 mb-12">
-          <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto font-mono">
-            &gt; Deploy intelligent systems_automate complex workflows_optimize operations in microseconds.
-          </p>
-          <p className="text-sm md:text-base text-primary max-w-3xl mx-auto font-mono">
-            &gt; Eliminate_errors // Reduce_costs // Unlock_unprecedented_efficiency
-          </p>
-        </div>
+        <p
+          ref={subtitleRef}
+          className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-4 leading-relaxed"
+        >
+          Deploy intelligent systems, automate complex workflows, optimize operations in microseconds.
+        </p>
+        
+        <p className="text-base text-primary/80 max-w-2xl mx-auto mb-12">
+          Eliminate errors // Reduce costs // Unlock unprecedented efficiency
+        </p>
 
         <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
           <Button
             size="lg"
             onClick={() => navigate('/contact')}
-            className="group bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-sm shadow-glow font-mono tracking-wider"
+            className="group relative overflow-hidden bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-lg shadow-glow"
           >
-            <ChevronRight className="w-4 h-4 mr-2" />
-            INITIALIZE_NOW
+            <span className="relative z-10 flex items-center gap-2">
+              Initialize Now
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </span>
           </Button>
 
           <Button
             size="lg"
             variant="outline"
             onClick={() => navigate('/solutions')}
-            className="border-primary/50 text-primary hover:bg-primary/10 hover:border-primary px-8 py-6 text-sm backdrop-blur-sm font-mono tracking-wider"
+            className="border-primary/30 hover:bg-primary/10 hover:border-primary/50 px-8 py-6 text-lg backdrop-blur-sm"
           >
-            <Terminal className="w-4 h-4 mr-2" />
-            EXPLORE_SYSTEMS
+            Explore Systems
           </Button>
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
           {[
-            { value: '60%', label: 'COST_REDUCTION', icon: '↓' },
-            { value: '5x', label: 'EFFICIENCY_GAIN', icon: '⚡' },
-            { value: '99.9%', label: 'ACCURACY_RATE', icon: '◎' },
-            { value: '24/7', label: 'AUTO_RUNTIME', icon: '↯' },
+            { value: '60%', label: 'Cost Reduction', icon: '↓' },
+            { value: '5x', label: 'Efficiency Gain', icon: '⚡' },
+            { value: '99.9%', label: 'Accuracy Rate', icon: '◉' },
+            { value: '24/7', label: 'Auto Runtime', icon: '∞' },
           ].map((stat, index) => (
             <div
               key={index}
-              className="p-6 border border-primary/20 bg-card/30 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 hover:shadow-glow group"
+              className="p-6 rounded-lg bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-sm border border-primary/10 hover:border-primary/30 transition-all duration-300 hover:shadow-glow group"
             >
-              <div className="text-xs text-primary mb-2 font-mono">{stat.icon}</div>
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">
+              <div className="text-2xl mb-2 opacity-50">{stat.icon}</div>
+              <div className="text-4xl md:text-5xl font-bold bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform">
                 {stat.value}
               </div>
-              <div className="text-xs text-muted-foreground font-mono tracking-wider">{stat.label}</div>
+              <div className="text-sm text-muted-foreground uppercase tracking-wider">{stat.label}</div>
             </div>
           ))}
         </div>
+
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/10 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-secondary/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
       </div>
     </section>
   );
