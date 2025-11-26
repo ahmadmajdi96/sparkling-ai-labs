@@ -8,7 +8,6 @@ export const WebGLBackground = () => {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
       75,
@@ -25,13 +24,13 @@ export const WebGLBackground = () => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     containerRef.current.appendChild(renderer.domElement);
 
-    // Create particle system with green Matrix theme
+    // Particle system
     const particleCount = 2000;
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 
-    const color1 = new THREE.Color(0x10B981); // Emerald green
-    const color2 = new THREE.Color(0x34D399); // Light green
+    const color1 = new THREE.Color(0x00D9FF);
+    const color2 = new THREE.Color(0x3B82F6);
 
     for (let i = 0; i < particleCount * 3; i += 3) {
       positions[i] = (Math.random() - 0.5) * 100;
@@ -59,7 +58,7 @@ export const WebGLBackground = () => {
     const particles = new THREE.Points(geometry, material);
     scene.add(particles);
 
-    // Add connecting lines in green
+    // Lines
     const lineGeometry = new THREE.BufferGeometry();
     const linePositions = new Float32Array(300 * 3);
     
@@ -72,9 +71,9 @@ export const WebGLBackground = () => {
     lineGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
 
     const lineMaterial = new THREE.LineBasicMaterial({
-      color: 0x10B981,
+      color: 0x00D9FF,
       transparent: true,
-      opacity: 0.15,
+      opacity: 0.1,
     });
 
     const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
@@ -82,7 +81,6 @@ export const WebGLBackground = () => {
 
     camera.position.z = 50;
 
-    // Mouse move handler
     const handleMouseMove = (event: MouseEvent) => {
       mousePosition.current = {
         x: (event.clientX / window.innerWidth) * 2 - 1,
@@ -92,7 +90,6 @@ export const WebGLBackground = () => {
 
     window.addEventListener('mousemove', handleMouseMove);
 
-    // Handle resize
     const handleResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
@@ -101,21 +98,17 @@ export const WebGLBackground = () => {
 
     window.addEventListener('resize', handleResize);
 
-    // Animation loop
     let animationId: number;
     const animate = () => {
       animationId = requestAnimationFrame(animate);
 
-      // Rotate particles
       particles.rotation.y += 0.0005;
       particles.rotation.x = mousePosition.current.y * 0.1;
       particles.rotation.y += mousePosition.current.x * 0.05;
 
-      // Animate lines
       lines.rotation.y -= 0.0003;
       lines.rotation.x = mousePosition.current.y * 0.05;
 
-      // Update camera position based on mouse
       camera.position.x += (mousePosition.current.x * 5 - camera.position.x) * 0.05;
       camera.position.y += (mousePosition.current.y * 5 - camera.position.y) * 0.05;
 
@@ -124,7 +117,6 @@ export const WebGLBackground = () => {
 
     animate();
 
-    // Cleanup
     return () => {
       cancelAnimationFrame(animationId);
       window.removeEventListener('mousemove', handleMouseMove);
@@ -141,7 +133,7 @@ export const WebGLBackground = () => {
     <div
       ref={containerRef}
       className="fixed inset-0 -z-10"
-      style={{ background: '#000000' }}
+      style={{ background: 'linear-gradient(180deg, hsl(220 20% 8%), hsl(220 18% 12%))' }}
     />
   );
 };

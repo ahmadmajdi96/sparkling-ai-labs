@@ -49,11 +49,10 @@ export default {
         },
         glow: "hsl(var(--glow))",
         "glow-secondary": "hsl(var(--glow-secondary))",
-        terminal: "hsl(var(--terminal))",
       },
       fontFamily: {
-        mono: ['Space Mono', 'Courier New', 'monospace'],
-        terminal: ['Space Mono', 'monospace'],
+        orbitron: ['Orbitron', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-primary': 'var(--gradient-primary)',

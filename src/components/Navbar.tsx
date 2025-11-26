@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from './ui/button';
-import { Binary } from 'lucide-react';
+import { Cpu } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,62 +30,66 @@ export const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50 px-4 py-4 transition-all duration-300"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="p-2 rounded border border-primary/30 bg-background/50 backdrop-blur-sm group-hover:border-primary transition-colors">
-            <Binary className="w-5 h-5 text-primary" />
+        <Link to="/" className="flex items-center gap-3 group">
+          <div className="p-2 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 group-hover:from-primary/30 group-hover:to-secondary/30 transition-all">
+            <Cpu className="w-6 h-6 text-primary" />
           </div>
           <div className="flex flex-col leading-none">
-            <span className="text-xl font-bold text-primary tracking-wider">CORTANEX</span>
-            <span className="text-[10px] text-muted-foreground tracking-widest">AI NEURAL SYSTEMS</span>
+            <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              CortaNex
+            </span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-widest">
+              AI Neural Systems
+            </span>
           </div>
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
           <Link
             to="/"
-            className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors tracking-wider"
+            className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
           >
-            HOME
+            Home
           </Link>
           <Link
             to="/solutions"
-            className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors tracking-wider"
+            className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
           >
-            SOLUTIONS
+            Solutions
           </Link>
           <Link
             to="/industries"
-            className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors tracking-wider"
+            className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
           >
-            INDUSTRIES
+            Industries
           </Link>
           <Link
             to="/about"
-            className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors tracking-wider"
+            className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
           >
-            ABOUT
+            About
           </Link>
           <Link
             to="/contact"
-            className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors tracking-wider"
+            className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
           >
-            CONTACT
+            Contact
           </Link>
         </div>
 
         <Button
           size="sm"
-          className="bg-primary/10 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all shadow-glow"
+          className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-glow"
         >
-          &gt; INITIALIZE
+          Initialize
         </Button>
       </div>
 
       <style>{`
         .nav-scrolled {
-          background: rgba(0, 0, 0, 0.8);
+          background: rgba(15, 23, 42, 0.8);
           backdrop-filter: blur(12px);
-          border-bottom: 1px solid hsla(142, 40%, 15%, 0.5);
+          border-bottom: 1px solid hsla(220, 15%, 20%, 0.5);
         }
       `}</style>
     </nav>
