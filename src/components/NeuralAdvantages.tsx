@@ -48,15 +48,18 @@ export const NeuralAdvantages = () => {
       const cards = cardsRef.current?.children;
       if (!cards) return;
 
+      // Set initial state
+      gsap.set(cards, { opacity: 1 });
+
       gsap.from(cards, {
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top center',
+          start: 'top 80%',
         },
-        y: 100,
+        y: 60,
         opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
+        duration: 0.6,
+        stagger: 0.1,
         ease: 'power3.out',
       });
     }, sectionRef);
@@ -82,12 +85,12 @@ export const NeuralAdvantages = () => {
             return (
               <Card
                 key={index}
-                className="group p-6 bg-card/50 backdrop-blur-sm border-primary/10 hover:border-primary/30 transition-all duration-300 hover:shadow-glow cursor-pointer"
+                className="group p-6 bg-card/80 backdrop-blur-sm border border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-glow cursor-pointer"
               >
                 <div className="mb-4 inline-flex p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
                   <Icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-2xl font-semibold mb-3">{advantage.title}</h3>
+                <h3 className="text-2xl font-semibold mb-3 text-foreground">{advantage.title}</h3>
                 <p className="text-base text-muted-foreground leading-relaxed">{advantage.description}</p>
               </Card>
             );
