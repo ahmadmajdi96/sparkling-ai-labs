@@ -56,15 +56,18 @@ export const NeuralPortals = () => {
       const cards = cardsRef.current?.children;
       if (!cards) return;
 
+      // Set initial state
+      gsap.set(cards, { opacity: 1 });
+
       gsap.from(cards, {
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top center',
+          start: 'top 80%',
         },
-        y: 100,
+        y: 60,
         opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
+        duration: 0.6,
+        stagger: 0.08,
         ease: 'power3.out',
       });
     }, sectionRef);
@@ -93,9 +96,9 @@ export const NeuralPortals = () => {
             return (
               <Card
                 key={portal.id}
-                className="group p-6 bg-card/50 backdrop-blur-sm border-primary/10 hover:border-primary/30 transition-all duration-300 hover:shadow-glow cursor-pointer relative overflow-hidden"
+                className="group p-6 bg-card/80 backdrop-blur-sm border border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-glow cursor-pointer relative overflow-hidden"
               >
-                <div className="absolute top-4 right-4 text-6xl font-bold text-primary/5 group-hover:text-primary/10 transition-colors">
+                <div className="absolute top-4 right-4 text-6xl font-bold text-primary/10 group-hover:text-primary/20 transition-colors">
                   {portal.id}
                 </div>
                 
@@ -103,7 +106,7 @@ export const NeuralPortals = () => {
                   <Icon className="w-6 h-6" />
                 </div>
                 
-                <h3 className="text-2xl font-bold mb-3">{portal.title}</h3>
+                <h3 className="text-2xl font-bold mb-3 text-foreground">{portal.title}</h3>
                 
                 <p className="text-base text-muted-foreground leading-relaxed mb-6">
                   {portal.description}
@@ -113,7 +116,7 @@ export const NeuralPortals = () => {
                   size="sm"
                   variant="outline"
                   onClick={() => navigate(`/solutions?tab=${portal.tab}`)}
-                  className="w-full border-primary/30 hover:bg-primary/10 hover:border-primary text-sm group/btn"
+                  className="w-full border-primary/30 hover:bg-primary/10 hover:border-primary text-foreground text-sm group/btn"
                 >
                   Access Portal
                   <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
