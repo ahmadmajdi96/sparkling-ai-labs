@@ -38,15 +38,15 @@ export const CTASection = () => {
           
           <div className="relative z-10">
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
-              Initialize Transformation
+              Start Your Transformation
             </h2>
             
             <div className="space-y-2 mb-8">
               <p className="text-xl md:text-2xl text-muted-foreground">
-                Join the neural network of industry leaders transforming operations
+                Join industry leaders transforming their operations with AI
               </p>
               <p className="text-lg md:text-xl text-primary/80">
-                Begin your journey with zero-code AI automation protocol
+                Begin your journey with zero-code AI automation
               </p>
             </div>
 
