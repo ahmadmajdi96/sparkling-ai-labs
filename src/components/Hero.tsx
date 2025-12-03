@@ -39,28 +39,28 @@ export const Hero = () => {
   return (
     <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
       <div className="max-w-7xl mx-auto text-center z-10">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/50 border border-primary/20 mb-8 backdrop-blur-sm">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/50 border border-primary/20 mb-6 backdrop-blur-sm">
           <Sparkles className="w-4 h-4 text-primary" />
-          <span className="text-sm text-muted-foreground">Initialize Neural System</span>
+          <span className="text-sm text-muted-foreground">Simplifying Complexity</span>
         </div>
 
         <h1
           ref={titleRef}
-          className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-8 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent leading-tight"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent leading-tight"
         >
-          Transform Reality
+          Transform Your Business
           <br />
           With AI Systems
         </h1>
 
         <p
           ref={subtitleRef}
-          className="text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-3xl mx-auto mb-4 leading-relaxed"
+          className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto mb-3 leading-relaxed"
         >
           Deploy intelligent systems, automate complex workflows, optimize operations in microseconds
         </p>
         
-        <p className="text-lg md:text-xl text-primary/80 max-w-2xl mx-auto mb-12">
+        <p className="text-base md:text-lg text-primary/80 max-w-2xl mx-auto mb-10">
           Eliminate errors • Reduce costs • Unlock unprecedented efficiency
         </p>
 
@@ -99,7 +99,7 @@ export const Hero = () => {
               className="p-6 rounded-lg bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-sm border border-primary/10 hover:border-primary/30 transition-all duration-300 hover:shadow-glow group"
             >
               <div className="text-2xl mb-2 opacity-50">{stat.icon}</div>
-              <div className="text-5xl md:text-6xl font-bold bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform">
+              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent mb-2 group-hover:scale-105 transition-transform">
                 {stat.value}
               </div>
               <div className="text-sm md:text-base text-muted-foreground uppercase tracking-wider">{stat.label}</div>
