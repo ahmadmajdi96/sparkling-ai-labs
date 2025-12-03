@@ -50,18 +50,18 @@ export const Hero = () => {
         >
           Transform Reality
           <br />
-          With AI Neural Systems
+          With AI Systems
         </h1>
 
         <p
           ref={subtitleRef}
           className="text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-3xl mx-auto mb-4 leading-relaxed"
         >
-          Deploy intelligent systems_automate complex workflows_optimize operations in microseconds
+          Deploy intelligent systems, automate complex workflows, optimize operations in microseconds
         </p>
         
         <p className="text-lg md:text-xl text-primary/80 max-w-2xl mx-auto mb-12">
-          Eliminate_errors // Reduce_costs // Unlock_unprecedented_efficiency
+          Eliminate errors • Reduce costs • Unlock unprecedented efficiency
         </p>
 
         <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">

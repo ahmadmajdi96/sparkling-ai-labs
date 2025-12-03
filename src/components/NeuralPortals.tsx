@@ -12,36 +12,36 @@ const portals = [
   {
     id: '01',
     icon: Brain,
-    title: 'AI Neural Core',
-    description: 'Build custom AI models and intelligent chatbots with quantum neural networks.',
+    title: 'AI Core',
+    description: 'Build custom AI models and intelligent chatbots designed specifically for your business. Zero code required.',
     tab: 'ai',
   },
   {
     id: '02',
     icon: Factory,
     title: 'Industrial Matrix',
-    description: 'Hardware integration and production line optimization with real-time neural analysis.',
+    description: 'Integrate AI with hardware solutions and optimize production lines with real-time analysis and predictive insights.',
     tab: 'industrial',
   },
   {
     id: '03',
     icon: Workflow,
     title: 'Automation Engine',
-    description: 'Design complex business workflows in seconds with neural workflow architecture.',
+    description: 'Design and deploy complex workflows with an intuitive visual designer. Zero technical expertise required.',
     tab: 'automation',
   },
   {
     id: '04',
     icon: Link2,
     title: 'Integration Hub',
-    description: 'AI-powered seamless connectivity between all systems and third-party networks.',
+    description: 'AI-powered seamless integration to connect any system instantly. Zero manual coding required.',
     tab: 'integration',
   },
   {
     id: '05',
     icon: GitBranch,
-    title: 'Workflow Nexus',
-    description: 'Orchestrate intelligent AI-driven workflows for maximum system efficiency.',
+    title: 'Workflows Nexus',
+    description: 'Create and orchestrate intelligent workflows for maximum efficiency. AI designs, optimizes, and manages autonomously.',
     tab: 'workflows',
   },
 ];
@@ -80,10 +80,10 @@ export const NeuralPortals = () => {
             <span className="text-sm text-primary uppercase tracking-wider">Access Portals</span>
           </div>
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            Five Neural Portals
+            Complete AI Solutions Suite
           </h2>
           <p className="text-xl md:text-2xl text-muted-foreground">
-            Complete platform suite for digital transformation
+            Transform every aspect of your business with five specialized portals
           </p>
         </div>
 

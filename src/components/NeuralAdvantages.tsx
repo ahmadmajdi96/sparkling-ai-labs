@@ -10,17 +10,17 @@ const advantages = [
   {
     icon: DollarSign,
     title: 'Cost Reduction',
-    description: 'Slash operational costs by 60% through neural automation protocols and quantum-optimized workflows.',
+    description: 'Slash operational costs by 60% through intelligent automation protocols and optimized workflows.',
   },
   {
     icon: XCircle,
     title: 'Error Elimination',
-    description: 'Achieve 95% error termination with AI-powered validation and real-time quality control systems.',
+    description: 'Achieve 95% error reduction with AI-powered validation and real-time quality control systems.',
   },
   {
     icon: Zap,
     title: 'Efficiency Boost',
-    description: 'Amplify productivity by 500% with hyper-streamlined, automated neural processes.',
+    description: 'Amplify productivity by 500% with streamlined, automated business processes.',
   },
   {
     icon: Clock,
@@ -30,12 +30,12 @@ const advantages = [
   {
     icon: BarChart3,
     title: 'Real-Time Analytics',
-    description: 'Access instant neural insights with comprehensive HUD dashboards and AI decision engines.',
+    description: 'Access instant insights with comprehensive dashboards and AI-powered decision engines.',
   },
   {
     icon: AlertTriangle,
     title: 'Bottleneck Detection',
-    description: 'Identify and neutralize workflow bottlenecks before they compromise system integrity.',
+    description: 'Identify and resolve workflow bottlenecks before they compromise system integrity.',
   },
 ];
 
@@ -72,7 +72,7 @@ export const NeuralAdvantages = () => {
             <span className="text-sm text-primary uppercase tracking-wider">System Capabilities</span>
           </div>
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            Neural Advantages
+            System Capabilities
           </h2>
         </div>
 
