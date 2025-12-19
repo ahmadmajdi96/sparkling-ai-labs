@@ -44,7 +44,7 @@ export const Navbar = () => {
         ref={navRef}
         className="fixed top-0 left-0 right-0 z-50 px-4 py-4 transition-all duration-300"
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className="container mx-auto flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 group">
             <div className="p-2 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 group-hover:from-primary/30 group-hover:to-secondary/30 transition-all">
               <Cpu className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
