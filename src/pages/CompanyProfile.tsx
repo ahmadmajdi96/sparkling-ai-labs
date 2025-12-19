@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from '@/components/ui/button';
@@ -10,15 +10,47 @@ import {
   Workflow, Database, Cloud, Lock,
   CheckCircle2, Sparkles, BarChart3, Settings,
   Users, Award, Lightbulb, Heart, Briefcase,
-  LineChart, Package, CreditCard, FileText, Bot
+  LineChart, Package, CreditCard, FileText, Bot,
+  Download, Loader2
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import html2pdf from 'html2pdf.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const CompanyProfile = () => {
   const pageRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
+
+  const handleDownloadPdf = async () => {
+    if (!contentRef.current || isGeneratingPdf) return;
+    
+    setIsGeneratingPdf(true);
+    
+    const opt = {
+      margin: [10, 10, 10, 10] as [number, number, number, number],
+      filename: 'Cortanex-AI-Company-Profile.pdf',
+      image: { type: 'jpeg' as const, quality: 0.98 },
+      html2canvas: { 
+        scale: 2, 
+        useCORS: true,
+        letterRendering: true,
+        backgroundColor: '#0a0a0f'
+      },
+      jsPDF: { unit: 'mm' as const, format: 'a4' as const, orientation: 'portrait' as const },
+      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] as const }
+    };
+
+    try {
+      await html2pdf().set(opt).from(contentRef.current).save();
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+    } finally {
+      setIsGeneratingPdf(false);
+    }
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -271,6 +303,28 @@ export const CompanyProfile = () => {
 
   return (
     <div ref={pageRef} className="min-h-screen bg-background">
+      {/* Fixed Download Button */}
+      <div className="fixed top-6 right-6 z-50">
+        <Button 
+          onClick={handleDownloadPdf}
+          disabled={isGeneratingPdf}
+          className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-primary-foreground shadow-lg shadow-primary/25"
+        >
+          {isGeneratingPdf ? (
+            <>
+              <Loader2 className="w-4 h-4 animate-spin" />
+              Generating...
+            </>
+          ) : (
+            <>
+              <Download className="w-4 h-4" />
+              Download PDF
+            </>
+          )}
+        </Button>
+      </div>
+
+      <div ref={contentRef}>
       {/* Cover / Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Effects */}
@@ -802,10 +856,11 @@ export const CompanyProfile = () => {
             Intelligent Systems. Delivered at Speed.
           </p>
           <p className="text-muted-foreground/60 text-xs">
-            © {new Date().getFullYear()} Cortanex AI. All rights reserved.
-          </p>
+          © {new Date().getFullYear()} Cortanex AI. All rights reserved.
+        </p>
         </div>
       </footer>
+      </div>
     </div>
   );
 };
