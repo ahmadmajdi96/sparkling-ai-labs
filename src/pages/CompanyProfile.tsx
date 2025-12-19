@@ -29,25 +29,45 @@ export const CompanyProfile = () => {
     
     setIsGeneratingPdf(true);
     
+    const element = contentRef.current;
+    const originalStyle = element.style.cssText;
+    
+    // Temporarily set fixed width for consistent rendering
+    element.style.width = '1400px';
+    element.style.maxWidth = '1400px';
+    
     const opt = {
-      margin: [10, 10, 10, 10] as [number, number, number, number],
+      margin: 0,
       filename: 'Cortanex-AI-Company-Profile.pdf',
-      image: { type: 'jpeg' as const, quality: 0.98 },
+      image: { type: 'png' as const, quality: 1 },
       html2canvas: { 
-        scale: 2, 
+        scale: 3,
         useCORS: true,
+        allowTaint: true,
         letterRendering: true,
-        backgroundColor: '#0a0a0f'
+        backgroundColor: '#0a0a0f',
+        width: 1400,
+        windowWidth: 1400,
+        scrollX: 0,
+        scrollY: 0,
+        logging: false,
       },
-      jsPDF: { unit: 'mm' as const, format: 'a4' as const, orientation: 'portrait' as const },
-      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] as const }
+      jsPDF: { 
+        unit: 'px' as const, 
+        format: [1400, element.scrollHeight] as [number, number], 
+        orientation: 'portrait' as const,
+        hotfixes: ['px_scaling']
+      },
+      pagebreak: { mode: 'avoid-all' as const }
     };
 
     try {
-      await html2pdf().set(opt).from(contentRef.current).save();
+      await html2pdf().set(opt).from(element).save();
     } catch (error) {
       console.error('Error generating PDF:', error);
     } finally {
+      // Restore original styles
+      element.style.cssText = originalStyle;
       setIsGeneratingPdf(false);
     }
   };
