@@ -33,32 +33,41 @@ export const CompanyProfile = () => {
     const originalStyle = element.style.cssText;
     
     // Temporarily set fixed width for consistent rendering
-    element.style.width = '1400px';
-    element.style.maxWidth = '1400px';
+    element.style.width = '1200px';
+    element.style.maxWidth = '1200px';
+    element.style.minWidth = '1200px';
+    
+    // Wait for styles to apply
+    await new Promise(resolve => setTimeout(resolve, 100));
     
     const opt = {
-      margin: 0,
+      margin: [20, 20, 20, 20] as [number, number, number, number],
       filename: 'Cortanex-AI-Company-Profile.pdf',
-      image: { type: 'png' as const, quality: 1 },
+      image: { type: 'jpeg' as const, quality: 0.98 },
       html2canvas: { 
-        scale: 3,
+        scale: 2,
         useCORS: true,
         allowTaint: true,
         letterRendering: true,
         backgroundColor: '#0a0a0f',
-        width: 1400,
-        windowWidth: 1400,
         scrollX: 0,
-        scrollY: 0,
+        scrollY: -window.scrollY,
         logging: false,
+        onclone: (clonedDoc: Document) => {
+          const clonedElement = clonedDoc.querySelector('[data-pdf-content]') as HTMLElement;
+          if (clonedElement) {
+            clonedElement.style.width = '1200px';
+            clonedElement.style.maxWidth = '1200px';
+            clonedElement.style.minWidth = '1200px';
+          }
+        }
       },
       jsPDF: { 
-        unit: 'px' as const, 
-        format: [1400, element.scrollHeight] as [number, number], 
+        unit: 'mm' as const, 
+        format: 'a4' as const, 
         orientation: 'portrait' as const,
-        hotfixes: ['px_scaling']
       },
-      pagebreak: { mode: 'avoid-all' as const }
+      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] as ('avoid-all' | 'css' | 'legacy')[] }
     };
 
     try {
@@ -344,7 +353,7 @@ export const CompanyProfile = () => {
         </Button>
       </div>
 
-      <div ref={contentRef}>
+      <div ref={contentRef} data-pdf-content>
       {/* Cover / Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Effects */}
