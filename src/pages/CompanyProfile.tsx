@@ -9,7 +9,8 @@ import {
   ShoppingCart, Landmark, Server, Eye,
   Workflow, Database, Cloud, Lock,
   CheckCircle2, Sparkles, BarChart3, Settings,
-  Users, Award, Lightbulb, Heart
+  Users, Award, Lightbulb, Heart, Briefcase,
+  LineChart, Package, CreditCard, FileText, Bot
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -155,6 +156,117 @@ export const CompanyProfile = () => {
     { icon: Zap, title: 'Speed with Structure', description: 'Speed without structure is chaos' },
     { icon: Settings, title: 'Reduce Complexity', description: 'Automation should reduce cognitive load, not add it' },
     { icon: Layers, title: 'Future-Proof', description: 'Systems must be modular, adaptable, and scalable' },
+  ];
+
+  const caseStudies = [
+    {
+      icon: Landmark,
+      title: 'FinanceFlow AI',
+      client: 'Regional Banking Institution',
+      industry: 'Finance & FinTech',
+      duration: '8 Days',
+      challenge: 'Manual loan processing taking 5-7 days per application with high error rates and customer complaints.',
+      solution: 'AI-powered loan processing system with automated document verification, risk assessment, and decision engine.',
+      results: [
+        { metric: '94%', label: 'Faster Processing' },
+        { metric: '67%', label: 'Cost Reduction' },
+        { metric: '99.2%', label: 'Accuracy Rate' },
+        { metric: '4.8/5', label: 'Customer Rating' },
+      ],
+      technologies: ['NLP', 'Machine Learning', 'OCR', 'Cloud Infrastructure'],
+      gradient: 'from-green-500 to-emerald-600',
+      color: 'text-green-400'
+    },
+    {
+      icon: Factory,
+      title: 'VisionQC Pro',
+      client: 'Automotive Parts Manufacturer',
+      industry: 'Manufacturing',
+      duration: '10 Days',
+      challenge: 'Quality control relying on manual inspection causing 3% defect escape rate and production delays.',
+      solution: 'Computer vision-based quality control system with real-time defect detection and automated sorting.',
+      results: [
+        { metric: '0.1%', label: 'Defect Escape' },
+        { metric: '340%', label: 'Throughput Increase' },
+        { metric: '24/7', label: 'Continuous Operation' },
+        { metric: '$2.4M', label: 'Annual Savings' },
+      ],
+      technologies: ['Computer Vision', 'Edge Computing', 'PLC Integration', 'Real-time Analytics'],
+      gradient: 'from-yellow-500 to-orange-600',
+      color: 'text-yellow-400'
+    },
+    {
+      icon: Stethoscope,
+      title: 'MedInsight Platform',
+      client: 'Healthcare Network',
+      industry: 'Healthcare',
+      duration: '7 Days',
+      challenge: 'Patient data scattered across systems, making comprehensive care difficult and time-consuming.',
+      solution: 'Unified patient intelligence platform with AI-driven insights, predictive health alerts, and care coordination.',
+      results: [
+        { metric: '45%', label: 'Time Saved' },
+        { metric: '28%', label: 'Better Outcomes' },
+        { metric: '100%', label: 'HIPAA Compliant' },
+        { metric: '12K+', label: 'Patients Managed' },
+      ],
+      technologies: ['Healthcare AI', 'Data Integration', 'Predictive Analytics', 'Secure Cloud'],
+      gradient: 'from-red-500 to-pink-600',
+      color: 'text-red-400'
+    },
+    {
+      icon: Truck,
+      title: 'LogiRoute Intelligence',
+      client: 'National Logistics Company',
+      industry: 'Logistics',
+      duration: '6 Days',
+      challenge: 'Inefficient route planning causing fuel waste, delays, and poor customer satisfaction.',
+      solution: 'AI-powered route optimization with real-time traffic analysis, demand forecasting, and fleet management.',
+      results: [
+        { metric: '32%', label: 'Fuel Savings' },
+        { metric: '41%', label: 'Faster Deliveries' },
+        { metric: '99.1%', label: 'On-time Rate' },
+        { metric: '850+', label: 'Vehicles Optimized' },
+      ],
+      technologies: ['Route Optimization AI', 'IoT Integration', 'Real-time Tracking', 'Demand Forecasting'],
+      gradient: 'from-orange-500 to-amber-600',
+      color: 'text-orange-400'
+    },
+    {
+      icon: ShoppingCart,
+      title: 'RetailMind 360',
+      client: 'E-commerce Retailer',
+      industry: 'Retail & E-commerce',
+      duration: '5 Days',
+      challenge: 'Low conversion rates and high cart abandonment with no personalization strategy.',
+      solution: 'AI-driven personalization engine with product recommendations, dynamic pricing, and customer behavior analysis.',
+      results: [
+        { metric: '156%', label: 'Conversion Lift' },
+        { metric: '43%', label: 'Less Abandonment' },
+        { metric: '89%', label: 'Engagement Rate' },
+        { metric: '$8.2M', label: 'Revenue Increase' },
+      ],
+      technologies: ['Recommendation AI', 'Behavioral Analytics', 'Dynamic Pricing', 'A/B Testing'],
+      gradient: 'from-pink-500 to-rose-600',
+      color: 'text-pink-400'
+    },
+    {
+      icon: Building2,
+      title: 'SmartCity Operations Hub',
+      client: 'Metropolitan Municipality',
+      industry: 'Smart Cities',
+      duration: '10 Days',
+      challenge: 'Disconnected city services with no unified view of infrastructure, traffic, and public safety.',
+      solution: 'Integrated smart city command center with AI-powered traffic management, energy optimization, and emergency response.',
+      results: [
+        { metric: '27%', label: 'Traffic Reduction' },
+        { metric: '18%', label: 'Energy Savings' },
+        { metric: '3.2M', label: 'Citizens Served' },
+        { metric: '45%', label: 'Faster Response' },
+      ],
+      technologies: ['IoT Platform', 'Traffic AI', 'Energy Management', 'Emergency Systems'],
+      gradient: 'from-cyan-500 to-blue-600',
+      color: 'text-cyan-400'
+    },
   ];
 
   return (
@@ -420,8 +532,111 @@ export const CompanyProfile = () => {
         </div>
       </section>
 
-      {/* How We Work */}
+      {/* Portfolio / Case Studies */}
       <section className="profile-section py-24 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+              <Briefcase className="w-4 h-4 text-primary" />
+              <span className="text-sm text-primary">Portfolio & Case Studies</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+              Proven <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Results</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Real projects. Real impact. See how we've transformed operations across industries.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-8">
+            {caseStudies.map((study, i) => (
+              <div 
+                key={i} 
+                className="group relative p-6 rounded-2xl bg-card/60 border border-primary/10 hover:border-primary/30 transition-all duration-500 hover:shadow-glow overflow-hidden"
+              >
+                {/* Background Gradient */}
+                <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-br ${study.gradient} opacity-10 blur-3xl group-hover:opacity-20 transition-opacity`} />
+                
+                <div className="relative z-10">
+                  {/* Header */}
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${study.gradient} flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                        <study.icon className="w-6 h-6 text-primary-foreground" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-foreground">{study.title}</h3>
+                        <p className="text-sm text-muted-foreground">{study.client}</p>
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-end gap-1">
+                      <span className={`text-xs px-2 py-1 rounded-full bg-gradient-to-r ${study.gradient} text-primary-foreground font-medium`}>
+                        {study.industry}
+                      </span>
+                      <span className="text-xs text-muted-foreground flex items-center gap-1">
+                        <Clock className="w-3 h-3" /> {study.duration}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Challenge & Solution */}
+                  <div className="space-y-3 mb-6">
+                    <div className="p-3 rounded-lg bg-destructive/5 border border-destructive/10">
+                      <p className="text-xs font-semibold text-destructive/80 mb-1">THE CHALLENGE</p>
+                      <p className="text-sm text-muted-foreground">{study.challenge}</p>
+                    </div>
+                    <div className="p-3 rounded-lg bg-primary/5 border border-primary/10">
+                      <p className="text-xs font-semibold text-primary mb-1">OUR SOLUTION</p>
+                      <p className="text-sm text-muted-foreground">{study.solution}</p>
+                    </div>
+                  </div>
+
+                  {/* Results */}
+                  <div className="grid grid-cols-4 gap-2 mb-4">
+                    {study.results.map((result, j) => (
+                      <div key={j} className="text-center p-2 rounded-lg bg-background/50">
+                        <div className={`text-lg font-bold ${study.color}`}>{result.metric}</div>
+                        <div className="text-[10px] text-muted-foreground uppercase tracking-wider">{result.label}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Technologies */}
+                  <div className="flex flex-wrap gap-2">
+                    {study.technologies.map((tech, j) => (
+                      <span key={j} className="text-xs px-2 py-1 rounded-full bg-muted/50 text-muted-foreground border border-border/50">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Summary Stats */}
+          <div className="mt-16 p-8 rounded-2xl bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 border border-primary/20">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              {[
+                { value: '50+', label: 'Projects Delivered' },
+                { value: '98%', label: 'Client Satisfaction' },
+                { value: '$47M+', label: 'Client Savings Generated' },
+                { value: '15+', label: 'Industries Served' },
+              ].map((stat, i) => (
+                <div key={i}>
+                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-muted-foreground uppercase tracking-wider">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How We Work */}
+      <section className="profile-section py-24 px-4 bg-gradient-to-b from-card/50 to-background">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
