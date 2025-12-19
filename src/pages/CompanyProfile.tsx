@@ -26,57 +26,44 @@ export const CompanyProfile = () => {
 
   const handleDownloadPdf = async () => {
     if (!contentRef.current || isGeneratingPdf) return;
-    
+
     setIsGeneratingPdf(true);
-    
+
     const element = contentRef.current;
-    const originalStyle = element.style.cssText;
-    
-    // Temporarily set fixed width for consistent rendering
-    element.style.width = '1200px';
-    element.style.maxWidth = '1200px';
-    element.style.minWidth = '1200px';
-    
-    // Wait for styles to apply
-    await new Promise(resolve => setTimeout(resolve, 100));
-    
+    const originalScrollY = window.scrollY;
+
     const opt = {
-      margin: [20, 20, 20, 20] as [number, number, number, number],
+      margin: 0,
       filename: 'Cortanex-AI-Company-Profile.pdf',
-      image: { type: 'jpeg' as const, quality: 0.98 },
-      html2canvas: { 
+      image: { type: 'png' as const, quality: 1 },
+      html2canvas: {
         scale: 2,
         useCORS: true,
         allowTaint: true,
-        letterRendering: true,
-        backgroundColor: '#0a0a0f',
+        backgroundColor: null,
         scrollX: 0,
-        scrollY: -window.scrollY,
+        scrollY: 0,
         logging: false,
         onclone: (clonedDoc: Document) => {
-          const clonedElement = clonedDoc.querySelector('[data-pdf-content]') as HTMLElement;
-          if (clonedElement) {
-            clonedElement.style.width = '1200px';
-            clonedElement.style.maxWidth = '1200px';
-            clonedElement.style.minWidth = '1200px';
-          }
-        }
+          // Ensure identical theme background in the cloned DOM
+          clonedDoc.documentElement.style.background = 'hsl(var(--background))';
+          clonedDoc.body.style.background = 'hsl(var(--background))';
+        },
       },
-      jsPDF: { 
-        unit: 'mm' as const, 
-        format: 'a4' as const, 
-        orientation: 'portrait' as const,
-      },
-      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] as ('avoid-all' | 'css' | 'legacy')[] }
+      jsPDF: { unit: 'mm' as const, format: 'a4' as const, orientation: 'portrait' as const },
+      pagebreak: { mode: ['css', 'legacy'] as ('css' | 'legacy')[] },
     };
 
     try {
+      // Capture from top to avoid "blank pages" due to current scroll position
+      window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+      await new Promise((r) => setTimeout(r, 50));
+
       await html2pdf().set(opt).from(element).save();
     } catch (error) {
       console.error('Error generating PDF:', error);
     } finally {
-      // Restore original styles
-      element.style.cssText = originalStyle;
+      window.scrollTo({ top: originalScrollY, behavior: 'instant' as ScrollBehavior });
       setIsGeneratingPdf(false);
     }
   };
@@ -333,7 +320,7 @@ export const CompanyProfile = () => {
   return (
     <div ref={pageRef} className="min-h-screen bg-background">
       {/* Fixed Download Button */}
-      <div className="fixed top-6 right-6 z-50">
+      <div className="fixed top-6 right-6 z-50" data-html2pdf-ignore="true">
         <Button 
           onClick={handleDownloadPdf}
           disabled={isGeneratingPdf}
