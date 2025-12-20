@@ -942,6 +942,23 @@ const Portfolio = () => {
     return () => ctx.revert();
   }, []);
 
+  const systems = [
+    { id: 'cortanex-bi', name: 'CORTANEX BI', icon: BarChart3 },
+    { id: 'production-hub', name: 'PRODUCTION HUB', icon: Factory },
+    { id: 'delivery-hub', name: 'DELIVERY HUB', icon: Truck },
+    { id: 'maintenance-hub', name: 'MAINTENANCE HUB', icon: Wrench },
+    { id: 'cortanex-crm', name: 'CORTANEX CRM', icon: Briefcase },
+    { id: 'management-portal', name: 'MANAGEMENT PORTAL', icon: Crown },
+    { id: 'ai-assistance', name: 'AI ASSISTANCE', icon: MessageSquare },
+  ];
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <div ref={pageRef} className="min-h-screen bg-background">
       <Navbar />
@@ -984,8 +1001,8 @@ const Portfolio = () => {
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
             {[
-              { value: '8+', label: 'Feature Categories' },
-              { value: '30+', label: 'Core Features' },
+              { value: '7+', label: 'Complete Systems' },
+              { value: '60+', label: 'Feature Categories' },
               { value: 'AI', label: 'Powered Insights' },
               { value: '24/7', label: 'Operations' },
             ].map((stat, i) => (
@@ -1002,50 +1019,71 @@ const Portfolio = () => {
         </div>
       </section>
 
+      {/* Sticky Navigation */}
+      <nav className="sticky top-16 z-40 bg-background/80 backdrop-blur-md border-b border-primary/10 py-3">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-1">
+            {systems.map((system) => {
+              const Icon = system.icon;
+              return (
+                <button
+                  key={system.id}
+                  onClick={() => scrollToSection(system.id)}
+                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 border border-primary/20 hover:border-primary/50 hover:bg-primary/10 transition-all whitespace-nowrap text-sm font-medium text-muted-foreground hover:text-foreground"
+                >
+                  <Icon className="w-4 h-4" />
+                  <span className="hidden sm:inline">{system.name}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </nav>
+
       {/* CORTANEX BI System */}
-      <section className="portfolio-section py-24 px-4">
+      <section id="cortanex-bi" className="portfolio-section py-24 px-4 scroll-mt-32">
         <div className="max-w-6xl mx-auto">
           <SystemCard {...cortanexBISystem} />
         </div>
       </section>
 
       {/* PRODUCTION HUB System */}
-      <section className="portfolio-section py-24 px-4 bg-gradient-to-b from-card/30 to-background">
+      <section id="production-hub" className="portfolio-section py-24 px-4 bg-gradient-to-b from-card/30 to-background scroll-mt-32">
         <div className="max-w-6xl mx-auto">
           <SystemCard {...productionHubSystem} />
         </div>
       </section>
 
       {/* DELIVERY HUB System */}
-      <section className="portfolio-section py-24 px-4">
+      <section id="delivery-hub" className="portfolio-section py-24 px-4 scroll-mt-32">
         <div className="max-w-6xl mx-auto">
           <SystemCard {...deliveryManagementSystem} />
         </div>
       </section>
 
       {/* MAINTENANCE HUB System */}
-      <section className="portfolio-section py-24 px-4 bg-gradient-to-b from-card/30 to-background">
+      <section id="maintenance-hub" className="portfolio-section py-24 px-4 bg-gradient-to-b from-card/30 to-background scroll-mt-32">
         <div className="max-w-6xl mx-auto">
           <SystemCard {...maintenanceManagementSystem} />
         </div>
       </section>
 
       {/* CORTANEX CRM System */}
-      <section className="portfolio-section py-24 px-4">
+      <section id="cortanex-crm" className="portfolio-section py-24 px-4 scroll-mt-32">
         <div className="max-w-6xl mx-auto">
           <SystemCard {...cortanexCRMSystem} />
         </div>
       </section>
 
       {/* CORTANEX MANAGEMENT PORTAL System */}
-      <section className="portfolio-section py-24 px-4 bg-gradient-to-b from-card/30 to-background">
+      <section id="management-portal" className="portfolio-section py-24 px-4 bg-gradient-to-b from-card/30 to-background scroll-mt-32">
         <div className="max-w-6xl mx-auto">
           <SystemCard {...managementPortalSystem} />
         </div>
       </section>
 
       {/* CORTANEX AI ASSISTANCE System */}
-      <section className="portfolio-section py-24 px-4">
+      <section id="ai-assistance" className="portfolio-section py-24 px-4 scroll-mt-32">
         <div className="max-w-6xl mx-auto">
           <SystemCard {...aiAssistanceSystem} />
         </div>
