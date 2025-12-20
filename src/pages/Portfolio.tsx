@@ -5,7 +5,8 @@ import {
   Brain, BarChart3, Bot, Users, Calculator, Shield, Building2, UserCheck,
   Sparkles, LineChart, FileText, Target, Clock, Zap, Database, Settings,
   Factory, Cog, Monitor, AlertTriangle, Wrench, HardDrive, User, 
-  CalendarDays, ClipboardCheck, DollarSign, Key, Search, LayoutDashboard, Bell
+  CalendarDays, ClipboardCheck, DollarSign, Key, Search, LayoutDashboard, Bell,
+  Truck, MapPin, Package, Smartphone, Star, Lock, Map, Route
 } from 'lucide-react';
 import { SystemCard } from '@/components/portfolio/SystemCard';
 import { Navbar } from '@/components/Navbar';
@@ -231,6 +232,154 @@ const productionHubSystem = {
   ]
 };
 
+// DELIVERY MANAGEMENT System Data
+const deliveryManagementSystem = {
+  name: 'DELIVERY HUB',
+  tagline: 'AI-Powered Delivery Management Platform',
+  description: 'An intelligent delivery management system with AI-powered driver assignment, real-time fleet tracking, route optimization, and comprehensive analytics for modern logistics operations.',
+  icon: Truck,
+  gradient: 'from-emerald-500 to-teal-500',
+  screenshots: [
+    'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800&auto=format',
+    'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format',
+    'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&auto=format',
+    'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=800&auto=format',
+    'https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=800&auto=format',
+  ],
+  categories: [
+    {
+      icon: Users,
+      title: '1. User & Access Management',
+      gradient: 'from-emerald-500 to-teal-500',
+      features: [
+        { name: 'Role-Based Access Control', description: 'Four distinct user roles: Owner, Manager, Supervisor, Driver' },
+        { name: 'Secure Authentication', description: 'Email/password login with session management' },
+        { name: 'User Management Portal', description: 'Add, edit, and manage team members and permissions' },
+        { name: 'Driver Portal Access', description: 'One-click access to any driver\'s mobile interface' },
+      ]
+    },
+    {
+      icon: LayoutDashboard,
+      title: '2. Executive Dashboards',
+      gradient: 'from-blue-500 to-indigo-500',
+      features: [
+        { name: 'Owner Dashboard', description: 'Global system oversight with financial metrics and AI policy controls' },
+        { name: 'Manager Dashboard', description: 'Operational control with driver assignment and live monitoring' },
+        { name: 'Supervisor Dashboard', description: 'Field-level oversight with real-time alerts and driver communication' },
+        { name: 'KPI Stat Cards', description: 'Live metrics: deliveries, active drivers, on-time rate, revenue, pending issues' },
+      ]
+    },
+    {
+      icon: Truck,
+      title: '3. Fleet & Driver Management',
+      gradient: 'from-orange-500 to-amber-500',
+      features: [
+        { name: 'Driver Registry', description: 'Complete driver profiles with vehicle info and contact details' },
+        { name: 'Status Tracking', description: 'Real-time status: Available, En Route, Delivering, On Break, Offline' },
+        { name: 'Performance Scoring', description: 'Automated driver scoring based on delivery history' },
+        { name: 'Driver Route Preview', description: 'View driver\'s current delivery route with all stops' },
+        { name: 'Quick Actions', description: 'Direct call/message drivers from dashboard' },
+      ]
+    },
+    {
+      icon: Package,
+      title: '4. Order & Delivery Management',
+      gradient: 'from-violet-500 to-purple-500',
+      features: [
+        { name: 'Order Creation', description: 'Create orders with customer details, items, and delivery notes' },
+        { name: 'Order Status Pipeline', description: 'Pending → Assigned → Picked Up → In Transit → Delivered' },
+        { name: 'COD Support', description: 'Cash-on-delivery amount tracking' },
+        { name: 'Delivery Zones', description: 'Geographic zone assignment for orders' },
+        { name: 'Bulk Order Management', description: 'Search, filter, and export order data' },
+      ]
+    },
+    {
+      icon: Bot,
+      title: '5. AI-Powered Automation',
+      gradient: 'from-primary to-secondary',
+      features: [
+        { name: 'AI Driver Assignment', description: 'Intelligent driver selection based on location, load, and performance' },
+        { name: 'Confidence Scoring', description: 'AI recommendations with confidence percentages' },
+        { name: 'Route Optimization', description: 'Multi-driver route comparison with distance and time estimates' },
+        { name: 'Intelligent Batching', description: 'Auto-group orders by proximity for efficiency' },
+        { name: 'AI Decision Logging', description: 'Full audit trail of AI recommendations and overrides' },
+        { name: 'AI Controls Panel', description: 'Configure automation thresholds and policies' },
+      ]
+    },
+    {
+      icon: Map,
+      title: '6. Live Tracking & Maps',
+      gradient: 'from-cyan-500 to-sky-500',
+      features: [
+        { name: 'Real-Time Fleet Map', description: 'Live driver positions with status indicators' },
+        { name: 'Route Visualization', description: 'View optimized delivery routes on interactive maps' },
+        { name: 'Driver Position Updates', description: 'GPS tracking every 30 seconds' },
+        { name: 'Pulsing Location Markers', description: 'Animated driver positions for visual clarity' },
+        { name: 'Zone Boundaries', description: 'Delivery zone overlays on maps' },
+      ]
+    },
+    {
+      icon: Smartphone,
+      title: '7. Driver Mobile Application',
+      gradient: 'from-rose-500 to-pink-500',
+      features: [
+        { name: 'Delivery Queue', description: 'Ordered list of assigned deliveries' },
+        { name: 'Turn-by-Turn Navigation', description: 'Direct integration with device navigation' },
+        { name: 'Status Updates', description: 'One-tap status changes (picked up, in transit, delivered)' },
+        { name: 'Issue Reporting', description: 'Report delivery problems with notes' },
+        { name: 'Proof of Delivery', description: 'Camera capture with GPS timestamp' },
+        { name: 'Offline Support', description: 'Continue working during connectivity issues' },
+      ]
+    },
+    {
+      icon: Star,
+      title: '8. Customer Experience',
+      gradient: 'from-yellow-500 to-orange-500',
+      features: [
+        { name: 'Live Tracking Link', description: 'Unique URL for customers to track their delivery' },
+        { name: 'Real-Time Driver Location', description: 'See driver approaching on map' },
+        { name: 'Delivery Timeline', description: 'Step-by-step progress updates' },
+        { name: 'ETA Display', description: 'Estimated time of arrival' },
+        { name: 'Feedback & Rating', description: 'Post-delivery rating and comments' },
+      ]
+    },
+    {
+      icon: LineChart,
+      title: '9. Analytics & Reporting',
+      gradient: 'from-indigo-500 to-violet-500',
+      features: [
+        { name: 'Delivery Analytics', description: 'Weekly/monthly delivery volume charts' },
+        { name: 'Revenue Tracking', description: 'Daily and trend-based revenue visualization' },
+        { name: 'Performance Metrics', description: 'On-time rates, average delivery times' },
+        { name: 'Driver Performance', description: 'Individual driver statistics and rankings' },
+        { name: 'AI Insights Panel', description: 'System recommendations and anomaly detection' },
+      ]
+    },
+    {
+      icon: Settings,
+      title: '10. System Administration',
+      gradient: 'from-gray-500 to-slate-600',
+      features: [
+        { name: 'Settings Panel', description: 'System-wide configuration options' },
+        { name: 'Delivery Zone Management', description: 'Create and manage geographic zones' },
+        { name: 'Audit Logging', description: 'Track all system changes and user actions' },
+        { name: 'Customer Database', description: 'Manage customer profiles and addresses' },
+      ]
+    },
+    {
+      icon: Lock,
+      title: '11. Security & Compliance',
+      gradient: 'from-red-500 to-rose-600',
+      features: [
+        { name: 'Row-Level Security', description: 'Database-level access controls' },
+        { name: 'Session Management', description: 'Secure authentication tokens' },
+        { name: 'Data Encryption', description: 'Secure data transmission' },
+        { name: 'Location Privacy', description: 'Controlled access to driver GPS data' },
+      ]
+    },
+  ]
+};
+
 const Portfolio = () => {
   const pageRef = useRef<HTMLDivElement>(null);
 
@@ -326,6 +475,13 @@ const Portfolio = () => {
       <section className="portfolio-section py-24 px-4 bg-gradient-to-b from-card/30 to-background">
         <div className="max-w-6xl mx-auto">
           <SystemCard {...productionHubSystem} />
+        </div>
+      </section>
+
+      {/* DELIVERY HUB System */}
+      <section className="portfolio-section py-24 px-4">
+        <div className="max-w-6xl mx-auto">
+          <SystemCard {...deliveryManagementSystem} />
         </div>
       </section>
 
