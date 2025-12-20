@@ -9,7 +9,8 @@ import {
   Truck, MapPin, Package, Smartphone, Star, Lock, Map, Route,
   Gauge, Calendar, CheckSquare, ShieldCheck, BarChart2, Palette,
   Briefcase, CreditCard, Headphones, Megaphone, Building, FolderKanban,
-  Crown, Network, GitBranch, FileCheck, Workflow
+  Crown, Network, GitBranch, FileCheck, Workflow,
+  MessageSquare, BookOpen, FileType, Link, UsersRound, BellRing, ShieldAlert, Receipt, HelpCircle
 } from 'lucide-react';
 import { SystemCard } from '@/components/portfolio/SystemCard';
 import { Navbar } from '@/components/Navbar';
@@ -773,6 +774,150 @@ const managementPortalSystem = {
   ]
 };
 
+// CORTANEX AI ASSISTANCE System Data
+const aiAssistanceSystem = {
+  name: 'CORTANEX AI ASSISTANCE',
+  tagline: 'Intelligent Chatbot & Conversational AI Platform',
+  description: 'A comprehensive AI chatbot platform with knowledge base management, conversation analytics, multi-channel deployment, and team collaboration tools for modern customer engagement.',
+  icon: MessageSquare,
+  gradient: 'from-pink-500 to-rose-500',
+  screenshots: [
+    'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&auto=format',
+    'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&auto=format',
+    'https://images.unsplash.com/photo-1675557009875-436f7a0c6f50?w=800&auto=format',
+    'https://images.unsplash.com/photo-1684487747720-1ba29cda82f8?w=800&auto=format',
+    'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&auto=format',
+  ],
+  categories: [
+    {
+      icon: LayoutDashboard,
+      title: '1. Dashboard & Overview',
+      gradient: 'from-pink-500 to-rose-500',
+      features: [
+        { name: 'Main Dashboard', description: 'Real-time metrics, conversation statistics, bot performance overview' },
+        { name: 'Activity Feed', description: 'Recent interactions, system events, alert notifications' },
+        { name: 'Quick Actions', description: 'Rapid access to common tasks, bot controls' },
+      ]
+    },
+    {
+      icon: Bot,
+      title: '2. Chatbot Management',
+      gradient: 'from-violet-500 to-purple-500',
+      features: [
+        { name: 'Chatbots', description: 'Bot creation, configuration, deployment management' },
+        { name: 'Bot Templates', description: 'Pre-built conversation templates, quick-start configurations' },
+        { name: 'Bot Settings', description: 'Personality configuration, response styles, behavior rules' },
+        { name: 'Multi-Bot Support', description: 'Manage multiple bots for different use cases' },
+      ]
+    },
+    {
+      icon: MessageSquare,
+      title: '3. Conversation Management',
+      gradient: 'from-blue-500 to-cyan-500',
+      features: [
+        { name: 'Conversations', description: 'Live conversation monitoring, history browsing' },
+        { name: 'Conversation Search', description: 'Full-text search, filter by date/status/user' },
+        { name: 'Conversation Handoff', description: 'Human takeover, escalation workflows' },
+        { name: 'Conversation Export', description: 'Data export, transcript downloads' },
+      ]
+    },
+    {
+      icon: BookOpen,
+      title: '4. Knowledge Base',
+      gradient: 'from-emerald-500 to-teal-500',
+      features: [
+        { name: 'Knowledge Base', description: 'Centralized information repository' },
+        { name: 'Document Upload', description: 'PDF, DOC, TXT ingestion for AI training' },
+        { name: 'Content Management', description: 'Add, edit, organize knowledge articles' },
+        { name: 'AI Training', description: 'Automatic knowledge extraction, embedding generation' },
+      ]
+    },
+    {
+      icon: FileType,
+      title: '5. Templates & Responses',
+      gradient: 'from-orange-500 to-amber-500',
+      features: [
+        { name: 'Templates', description: 'Pre-defined response templates' },
+        { name: 'Quick Replies', description: 'One-click response options' },
+        { name: 'Rich Media', description: 'Image, button, card responses' },
+        { name: 'Dynamic Variables', description: 'Personalization tokens, context insertion' },
+      ]
+    },
+    {
+      icon: BarChart2,
+      title: '6. Analytics & Insights',
+      gradient: 'from-indigo-500 to-blue-500',
+      features: [
+        { name: 'Analytics Dashboard', description: 'Conversation metrics, response times, satisfaction scores' },
+        { name: 'Usage Statistics', description: 'Message volumes, peak hours, user engagement' },
+        { name: 'Performance Metrics', description: 'Bot accuracy, resolution rates, escalation rates' },
+        { name: 'Trend Analysis', description: 'Historical comparisons, growth tracking' },
+      ]
+    },
+    {
+      icon: Link,
+      title: '7. Integrations',
+      gradient: 'from-cyan-500 to-teal-500',
+      features: [
+        { name: 'Integrations Hub', description: 'Third-party service connections' },
+        { name: 'API & Webhooks', description: 'REST API access, webhook configurations' },
+        { name: 'Channel Integrations', description: 'Multi-channel deployment (web, mobile, social)' },
+        { name: 'CRM Integration', description: 'Client data sync, conversation logging to CRM' },
+      ]
+    },
+    {
+      icon: UsersRound,
+      title: '8. Team Collaboration',
+      gradient: 'from-fuchsia-500 to-pink-500',
+      features: [
+        { name: 'Team Management', description: 'Team member roles, access permissions' },
+        { name: 'User Management', description: 'ChatFlow user accounts, role assignments' },
+        { name: 'Collaboration Tools', description: 'Shared inboxes, team notes, internal comments' },
+      ]
+    },
+    {
+      icon: BellRing,
+      title: '9. Notifications & Alerts',
+      gradient: 'from-yellow-500 to-orange-500',
+      features: [
+        { name: 'Notifications', description: 'Real-time alerts, system notifications' },
+        { name: 'Alert Rules', description: 'Custom trigger conditions, escalation alerts' },
+        { name: 'Email Notifications', description: 'Email alerts for critical events' },
+      ]
+    },
+    {
+      icon: ShieldAlert,
+      title: '10. Security & Compliance',
+      gradient: 'from-red-500 to-rose-600',
+      features: [
+        { name: 'Security Settings', description: 'Access controls, authentication settings' },
+        { name: 'Data Privacy', description: 'GDPR compliance tools, data retention policies' },
+        { name: 'Audit Logs', description: 'Activity tracking, security event logging' },
+      ]
+    },
+    {
+      icon: Receipt,
+      title: '11. Billing & Subscription',
+      gradient: 'from-green-500 to-emerald-500',
+      features: [
+        { name: 'Billing', description: 'Usage-based billing, invoice management' },
+        { name: 'Subscription Plans', description: 'Plan tiers, feature access levels' },
+        { name: 'Usage Tracking', description: 'Message quotas, API call limits' },
+      ]
+    },
+    {
+      icon: HelpCircle,
+      title: '12. Help & Support',
+      gradient: 'from-gray-500 to-slate-600',
+      features: [
+        { name: 'Help Center', description: 'Documentation, user guides' },
+        { name: 'Support Access', description: 'Ticket submission, live support' },
+        { name: 'Onboarding', description: 'Setup wizards, getting started guides' },
+      ]
+    },
+  ]
+};
+
 const Portfolio = () => {
   const pageRef = useRef<HTMLDivElement>(null);
 
@@ -896,6 +1041,13 @@ const Portfolio = () => {
       <section className="portfolio-section py-24 px-4 bg-gradient-to-b from-card/30 to-background">
         <div className="max-w-6xl mx-auto">
           <SystemCard {...managementPortalSystem} />
+        </div>
+      </section>
+
+      {/* CORTANEX AI ASSISTANCE System */}
+      <section className="portfolio-section py-24 px-4">
+        <div className="max-w-6xl mx-auto">
+          <SystemCard {...aiAssistanceSystem} />
         </div>
       </section>
 
