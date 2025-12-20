@@ -7,7 +7,8 @@ import {
   Factory, Cog, Monitor, AlertTriangle, Wrench, HardDrive, User, 
   CalendarDays, ClipboardCheck, DollarSign, Key, Search, LayoutDashboard, Bell,
   Truck, MapPin, Package, Smartphone, Star, Lock, Map, Route,
-  Gauge, Calendar, CheckSquare, ShieldCheck, BarChart2, Palette
+  Gauge, Calendar, CheckSquare, ShieldCheck, BarChart2, Palette,
+  Briefcase, CreditCard, Headphones, Megaphone, Building, FolderKanban
 } from 'lucide-react';
 import { SystemCard } from '@/components/portfolio/SystemCard';
 import { Navbar } from '@/components/Navbar';
@@ -521,6 +522,131 @@ const maintenanceManagementSystem = {
   ]
 };
 
+// CORTANEX CRM System Data
+const cortanexCRMSystem = {
+  name: 'CORTANEX CRM',
+  tagline: 'Intelligent Customer Relationship Management',
+  description: 'A comprehensive CRM platform with AI-powered insights, sales pipeline management, client communications, financial operations, and advanced analytics for modern sales teams.',
+  icon: Briefcase,
+  gradient: 'from-violet-500 to-purple-500',
+  screenshots: [
+    'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format',
+    'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&auto=format',
+    'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&auto=format',
+    'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&auto=format',
+    'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&auto=format',
+  ],
+  categories: [
+    {
+      icon: Target,
+      title: '1. Sales Management',
+      gradient: 'from-violet-500 to-purple-500',
+      features: [
+        { name: 'Sales Pipeline', description: 'Visual Kanban board with drag-and-drop stage management and pipeline analytics' },
+        { name: 'Opportunities', description: 'Deal creation, probability tracking, expected close dates, win/loss tracking' },
+        { name: 'Quotes & Proposals', description: 'Quote generation, PDF export, pricing calculator, component-based quoting' },
+        { name: 'Salesmen Management', description: 'Team roster, territory assignment, performance targets, commission tracking' },
+      ]
+    },
+    {
+      icon: Users,
+      title: '2. Client Management',
+      gradient: 'from-blue-500 to-cyan-500',
+      features: [
+        { name: 'Client Database', description: 'Full client profiles, contact information, industry classification, status tracking' },
+        { name: 'Client Communications', description: 'Call logging, email tracking, meeting notes, sentiment analysis' },
+        { name: 'Client Documents', description: 'Document uploads, file management, document categorization' },
+        { name: 'Client Tags & Notes', description: 'Custom tagging, internal notes, searchable annotations' },
+        { name: 'Status Board', description: 'Visual client status overview with workflow triggers' },
+      ]
+    },
+    {
+      icon: CreditCard,
+      title: '3. Financial Operations',
+      gradient: 'from-emerald-500 to-green-500',
+      features: [
+        { name: 'Invoicing', description: 'Invoice creation, line items, status tracking (draft/sent/paid/overdue)' },
+        { name: 'Payments', description: 'Payment logging, payment methods, invoice-payment linking' },
+        { name: 'Debit Management', description: 'Debit cases, collector assignments, debit pipeline, collection workflows' },
+      ]
+    },
+    {
+      icon: FolderKanban,
+      title: '4. Task & Project Management',
+      gradient: 'from-orange-500 to-amber-500',
+      features: [
+        { name: 'Tasks', description: 'Task creation, assignment, priority levels, due dates, stage-based workflow' },
+        { name: 'Task Stages', description: 'Customizable task pipelines with drag-and-drop progression' },
+        { name: 'Reminders', description: 'Scheduled reminders, notification triggers, follow-up automation' },
+        { name: 'Calendar', description: 'Event scheduling, client-linked events, team calendars, event types' },
+      ]
+    },
+    {
+      icon: Headphones,
+      title: '5. Support & Service',
+      gradient: 'from-rose-500 to-pink-500',
+      features: [
+        { name: 'Support Tickets', description: 'Ticket creation, priority management, SLA tracking, resolution workflows' },
+        { name: 'Support Pipeline', description: 'Visual ticket pipeline with stage-based progression' },
+        { name: 'Support Agents', description: 'Agent management, workload distribution, performance metrics' },
+      ]
+    },
+    {
+      icon: Bot,
+      title: '6. AI & Intelligence',
+      gradient: 'from-primary to-secondary',
+      features: [
+        { name: 'AI Chat', description: 'Conversational AI assistant for CRM queries and data exploration' },
+        { name: 'AI Insights', description: 'Automated analytics, trend detection, performance insights' },
+        { name: 'AI Recommendations', description: 'Smart suggestions and next-best-action recommendations' },
+        { name: 'AI Decisions', description: 'Decision support, option analysis, outcome tracking' },
+      ]
+    },
+    {
+      icon: Megaphone,
+      title: '7. Marketing & Competitors',
+      gradient: 'from-indigo-500 to-violet-500',
+      features: [
+        { name: 'Marketing', description: 'Campaign management and marketing activities tracking' },
+        { name: 'Competitors', description: 'Competitor database, competitive intelligence, market positioning' },
+        { name: 'Products', description: 'Product catalog, pricing, product-client associations' },
+      ]
+    },
+    {
+      icon: BarChart2,
+      title: '8. Analytics & Reporting',
+      gradient: 'from-cyan-500 to-teal-500',
+      features: [
+        { name: 'Dashboard', description: 'KPI cards, revenue metrics, conversion rates, pipeline analytics' },
+        { name: 'Reports', description: 'Custom reports, data exports, performance summaries' },
+        { name: 'KPIs', description: 'Key performance indicators, target tracking, goal management' },
+        { name: 'Traceability', description: 'Activity logging, audit trails, data lineage' },
+      ]
+    },
+    {
+      icon: Building,
+      title: '9. Organization & HR',
+      gradient: 'from-slate-500 to-gray-600',
+      features: [
+        { name: 'Employees', description: 'Employee directory, role management, department assignments' },
+        { name: 'Departments', description: 'Department structure and hierarchy management' },
+        { name: 'Roadmaps', description: 'Strategic roadmaps, milestone tracking, initiative planning' },
+        { name: 'Workflows', description: 'Automated workflows, trigger-based actions, process automation' },
+      ]
+    },
+    {
+      icon: Settings,
+      title: '10. Configuration & Admin',
+      gradient: 'from-gray-500 to-slate-600',
+      features: [
+        { name: 'Pipeline Configuration', description: 'Custom sales stages, status definitions, color coding' },
+        { name: 'User Roles & Permissions', description: 'Role-based access control, page permissions, team hierarchy' },
+        { name: 'System Settings', description: 'Profit margins, calculator settings, system preferences' },
+      ]
+    },
+  ]
+};
+
 const Portfolio = () => {
   const pageRef = useRef<HTMLDivElement>(null);
 
@@ -630,6 +756,13 @@ const Portfolio = () => {
       <section className="portfolio-section py-24 px-4 bg-gradient-to-b from-card/30 to-background">
         <div className="max-w-6xl mx-auto">
           <SystemCard {...maintenanceManagementSystem} />
+        </div>
+      </section>
+
+      {/* CORTANEX CRM System */}
+      <section className="portfolio-section py-24 px-4">
+        <div className="max-w-6xl mx-auto">
+          <SystemCard {...cortanexCRMSystem} />
         </div>
       </section>
 
