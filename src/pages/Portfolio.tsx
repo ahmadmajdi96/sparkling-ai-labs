@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
@@ -10,7 +10,8 @@ import {
   Gauge, Calendar, CheckSquare, ShieldCheck, BarChart2, Palette,
   Briefcase, CreditCard, Headphones, Megaphone, Building, FolderKanban,
   Crown, Network, GitBranch, FileCheck, Workflow,
-  MessageSquare, BookOpen, FileType, Link, UsersRound, BellRing, ShieldAlert, Receipt, HelpCircle
+  MessageSquare, BookOpen, FileType, Link, UsersRound, BellRing, ShieldAlert, Receipt, HelpCircle,
+  ChevronUp, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { SystemCard } from '@/components/portfolio/SystemCard';
 import { Navbar } from '@/components/Navbar';
@@ -920,6 +921,9 @@ const aiAssistanceSystem = {
 
 const Portfolio = () => {
   const pageRef = useRef<HTMLDivElement>(null);
+  const [activeSection, setActiveSection] = useState('cortanex-bi');
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -942,20 +946,52 @@ const Portfolio = () => {
     return () => ctx.revert();
   }, []);
 
+  // Track active section on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 500);
+      
+      const sections = systems.map(s => document.getElementById(s.id));
+      const scrollPosition = window.scrollY + 200;
+      
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(systems[i].id);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const systems = [
-    { id: 'cortanex-bi', name: 'CORTANEX BI', icon: BarChart3 },
-    { id: 'production-hub', name: 'PRODUCTION HUB', icon: Factory },
-    { id: 'delivery-hub', name: 'DELIVERY HUB', icon: Truck },
-    { id: 'maintenance-hub', name: 'MAINTENANCE HUB', icon: Wrench },
-    { id: 'cortanex-crm', name: 'CORTANEX CRM', icon: Briefcase },
-    { id: 'management-portal', name: 'MANAGEMENT PORTAL', icon: Crown },
-    { id: 'ai-assistance', name: 'AI ASSISTANCE', icon: MessageSquare },
+    { id: 'cortanex-bi', name: 'CORTANEX BI', shortName: 'BI', icon: BarChart3, color: 'from-primary to-secondary' },
+    { id: 'production-hub', name: 'PRODUCTION HUB', shortName: 'Production', icon: Factory, color: 'from-orange-500 to-red-500' },
+    { id: 'delivery-hub', name: 'DELIVERY HUB', shortName: 'Delivery', icon: Truck, color: 'from-emerald-500 to-teal-500' },
+    { id: 'maintenance-hub', name: 'MAINTENANCE HUB', shortName: 'Maintenance', icon: Wrench, color: 'from-amber-500 to-yellow-500' },
+    { id: 'cortanex-crm', name: 'CORTANEX CRM', shortName: 'CRM', icon: Briefcase, color: 'from-violet-500 to-purple-500' },
+    { id: 'management-portal', name: 'MANAGEMENT PORTAL', shortName: 'Management', icon: Crown, color: 'from-indigo-500 to-blue-500' },
+    { id: 'ai-assistance', name: 'AI ASSISTANCE', shortName: 'AI Chat', icon: MessageSquare, color: 'from-pink-500 to-rose-500' },
   ];
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const scrollNav = (direction: 'left' | 'right') => {
+    if (navRef.current) {
+      const scrollAmount = direction === 'left' ? -200 : 200;
+      navRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
   };
 
@@ -1020,22 +1056,62 @@ const Portfolio = () => {
       </section>
 
       {/* Sticky Navigation */}
-      <nav className="sticky top-16 z-40 bg-background/80 backdrop-blur-md border-b border-primary/10 py-3">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-1">
-            {systems.map((system) => {
-              const Icon = system.icon;
-              return (
-                <button
-                  key={system.id}
-                  onClick={() => scrollToSection(system.id)}
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 border border-primary/20 hover:border-primary/50 hover:bg-primary/10 transition-all whitespace-nowrap text-sm font-medium text-muted-foreground hover:text-foreground"
-                >
-                  <Icon className="w-4 h-4" />
-                  <span className="hidden sm:inline">{system.name}</span>
-                </button>
-              );
-            })}
+      <nav className="sticky top-16 z-40 bg-background/95 backdrop-blur-xl border-b border-primary/20 shadow-lg shadow-background/50">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <div className="relative flex items-center">
+            {/* Scroll Left Button */}
+            <button 
+              onClick={() => scrollNav('left')}
+              className="absolute left-0 z-10 p-1.5 rounded-full bg-background/90 border border-primary/20 text-muted-foreground hover:text-foreground hover:bg-primary/10 transition-all shadow-md md:hidden"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            
+            {/* Navigation Tabs */}
+            <div 
+              ref={navRef}
+              className="flex gap-2 overflow-x-auto scrollbar-hide px-8 md:px-0 md:justify-center w-full"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {systems.map((system) => {
+                const Icon = system.icon;
+                const isActive = activeSection === system.id;
+                return (
+                  <button
+                    key={system.id}
+                    onClick={() => scrollToSection(system.id)}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all whitespace-nowrap text-sm font-medium ${
+                      isActive 
+                        ? `bg-gradient-to-r ${system.color} text-primary-foreground shadow-glow` 
+                        : 'bg-card/60 border border-primary/20 text-muted-foreground hover:border-primary/50 hover:bg-primary/10 hover:text-foreground'
+                    }`}
+                  >
+                    <Icon className="w-4 h-4" />
+                    <span className="hidden sm:inline">{system.shortName}</span>
+                  </button>
+                );
+              })}
+            </div>
+            
+            {/* Scroll Right Button */}
+            <button 
+              onClick={() => scrollNav('right')}
+              className="absolute right-0 z-10 p-1.5 rounded-full bg-background/90 border border-primary/20 text-muted-foreground hover:text-foreground hover:bg-primary/10 transition-all shadow-md md:hidden"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+          
+          {/* Progress Indicator */}
+          <div className="flex justify-center gap-1 mt-2 md:hidden">
+            {systems.map((system) => (
+              <div 
+                key={system.id}
+                className={`h-1 rounded-full transition-all ${
+                  activeSection === system.id ? 'w-4 bg-primary' : 'w-1 bg-muted-foreground/30'
+                }`}
+              />
+            ))}
           </div>
         </div>
       </nav>
@@ -1104,6 +1180,17 @@ const Portfolio = () => {
           </p>
         </div>
       </section>
+
+      {/* Back to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 z-50 p-4 rounded-full bg-primary text-primary-foreground shadow-glow hover:scale-110 transition-all animate-fade-in"
+          aria-label="Back to top"
+        >
+          <ChevronUp className="w-6 h-6" />
+        </button>
+      )}
 
       <Footer />
     </div>
