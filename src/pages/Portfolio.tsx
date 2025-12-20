@@ -8,7 +8,8 @@ import {
   CalendarDays, ClipboardCheck, DollarSign, Key, Search, LayoutDashboard, Bell,
   Truck, MapPin, Package, Smartphone, Star, Lock, Map, Route,
   Gauge, Calendar, CheckSquare, ShieldCheck, BarChart2, Palette,
-  Briefcase, CreditCard, Headphones, Megaphone, Building, FolderKanban
+  Briefcase, CreditCard, Headphones, Megaphone, Building, FolderKanban,
+  Crown, Network, GitBranch, FileCheck, Workflow
 } from 'lucide-react';
 import { SystemCard } from '@/components/portfolio/SystemCard';
 import { Navbar } from '@/components/Navbar';
@@ -647,6 +648,131 @@ const cortanexCRMSystem = {
   ]
 };
 
+// CORTANEX MANAGEMENT PORTAL System Data
+const managementPortalSystem = {
+  name: 'CORTANEX MANAGEMENT PORTAL',
+  tagline: 'Enterprise Management & Oversight Platform',
+  description: 'A comprehensive management portal for executive oversight, workforce management, strategic planning, and organizational governance with AI-powered intelligence and workflow automation.',
+  icon: Crown,
+  gradient: 'from-sky-500 to-blue-600',
+  screenshots: [
+    'https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=800&auto=format',
+    'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&auto=format',
+    'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&auto=format',
+    'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&auto=format',
+    'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&auto=format',
+  ],
+  categories: [
+    {
+      icon: LayoutDashboard,
+      title: '1. Executive Dashboard',
+      gradient: 'from-sky-500 to-blue-600',
+      features: [
+        { name: 'Overview Dashboard', description: 'Real-time KPI cards, organizational metrics, performance summaries' },
+        { name: 'Analytics Dashboard', description: 'Trend charts, comparative analytics, period-over-period analysis' },
+        { name: 'Notifications Center', description: 'System alerts, action items, approval requests, team updates' },
+      ]
+    },
+    {
+      icon: Users,
+      title: '2. Workforce Management',
+      gradient: 'from-emerald-500 to-teal-500',
+      features: [
+        { name: 'Employee Directory', description: 'Complete employee profiles, contact information, employment details' },
+        { name: 'Employee Profiles', description: 'Detailed view with skills, performance history, documents, assignments' },
+        { name: 'User Management', description: 'User creation with authentication, role assignment, password management' },
+        { name: 'Skills & Positions', description: 'Skill inventory, position definitions, competency tracking' },
+        { name: 'Organizational Tree', description: 'Visual org chart, hierarchy management, reporting structure' },
+      ]
+    },
+    {
+      icon: Building2,
+      title: '3. Departmental Structure',
+      gradient: 'from-violet-500 to-purple-500',
+      features: [
+        { name: 'Departments', description: 'Department creation, budget allocation, headcount management' },
+        { name: 'Department Hierarchy', description: 'Parent-child relationships, cross-functional teams' },
+        { name: 'Department Metrics', description: 'Department-level KPIs, budget tracking, performance indicators' },
+      ]
+    },
+    {
+      icon: Target,
+      title: '4. Strategic Planning',
+      gradient: 'from-orange-500 to-amber-500',
+      features: [
+        { name: 'Strategic Goals', description: 'Long-term objectives, goal categorization, progress tracking' },
+        { name: 'OKRs', description: 'Objectives & Key Results framework, alignment tracking, scoring' },
+        { name: 'Roadmaps', description: 'Initiative planning, milestone tracking, timeline visualization' },
+        { name: 'KPIs', description: 'Key performance indicators, target setting, actual vs target analysis' },
+      ]
+    },
+    {
+      icon: FolderKanban,
+      title: '5. Task & Project Oversight',
+      gradient: 'from-rose-500 to-pink-500',
+      features: [
+        { name: 'Task Management', description: 'Organization-wide task visibility, assignment, prioritization' },
+        { name: 'Task Assignment', description: 'Multi-assignee support, delegation, workload balancing' },
+        { name: 'Task Tracking', description: 'Status monitoring, deadline tracking, completion rates' },
+        { name: 'Calendar', description: 'Company-wide calendar, event scheduling, resource booking' },
+      ]
+    },
+    {
+      icon: Bot,
+      title: '6. AI & Intelligence',
+      gradient: 'from-primary to-secondary',
+      features: [
+        { name: 'AI Chat', description: 'Executive AI assistant for strategic queries and insights' },
+        { name: 'AI Insights', description: 'Automated organizational analytics, pattern detection' },
+        { name: 'AI Recommendations', description: 'Strategic suggestions, optimization recommendations' },
+        { name: 'AI Decisions', description: 'Decision support system, scenario analysis, outcome tracking' },
+      ]
+    },
+    {
+      icon: FileCheck,
+      title: '7. Document & Knowledge Management',
+      gradient: 'from-cyan-500 to-teal-500',
+      features: [
+        { name: 'Document Repository', description: 'Centralized document storage, version control' },
+        { name: 'Company Policies', description: 'Policy management, acknowledgment tracking' },
+        { name: 'Document Categorization', description: 'Folder structure, tagging, search functionality' },
+      ]
+    },
+    {
+      icon: BarChart2,
+      title: '8. Reporting & Analytics',
+      gradient: 'from-indigo-500 to-blue-500',
+      features: [
+        { name: 'Executive Reports', description: 'High-level summaries, board-ready reports' },
+        { name: 'Performance Reports', description: 'Team and individual performance analysis' },
+        { name: 'Traceability', description: 'Audit trails, activity logging, compliance tracking' },
+        { name: 'Custom Reports', description: 'Report builder, data filtering, export capabilities' },
+      ]
+    },
+    {
+      icon: Workflow,
+      title: '9. Workflow Automation',
+      gradient: 'from-fuchsia-500 to-purple-500',
+      features: [
+        { name: 'Workflow Definitions', description: 'Process design, trigger configuration' },
+        { name: 'Automated Actions', description: 'Event-based triggers, notifications, escalations' },
+        { name: 'Approval Workflows', description: 'Multi-level approvals, delegation rules' },
+      ]
+    },
+    {
+      icon: Settings,
+      title: '10. Configuration & Administration',
+      gradient: 'from-gray-500 to-slate-600',
+      features: [
+        { name: 'System Configuration', description: 'Global settings, preferences, defaults' },
+        { name: 'Role-Based Access', description: 'Permission management, access control lists' },
+        { name: 'User Roles', description: 'CEO, Manager, Team Lead, Employee hierarchies' },
+        { name: 'Page Permissions', description: 'Granular page-level access control per user' },
+      ]
+    },
+  ]
+};
+
 const Portfolio = () => {
   const pageRef = useRef<HTMLDivElement>(null);
 
@@ -763,6 +889,13 @@ const Portfolio = () => {
       <section className="portfolio-section py-24 px-4">
         <div className="max-w-6xl mx-auto">
           <SystemCard {...cortanexCRMSystem} />
+        </div>
+      </section>
+
+      {/* CORTANEX MANAGEMENT PORTAL System */}
+      <section className="portfolio-section py-24 px-4 bg-gradient-to-b from-card/30 to-background">
+        <div className="max-w-6xl mx-auto">
+          <SystemCard {...managementPortalSystem} />
         </div>
       </section>
 
