@@ -3,7 +3,9 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
   Brain, BarChart3, Bot, Users, Calculator, Shield, Building2, UserCheck,
-  Sparkles, LineChart, FileText, Target, Clock, Zap, Database, Settings
+  Sparkles, LineChart, FileText, Target, Clock, Zap, Database, Settings,
+  Factory, Cog, Monitor, AlertTriangle, Wrench, HardDrive, User, 
+  CalendarDays, ClipboardCheck, DollarSign, Key, Search, LayoutDashboard, Bell
 } from 'lucide-react';
 import { SystemCard } from '@/components/portfolio/SystemCard';
 import { Navbar } from '@/components/Navbar';
@@ -18,7 +20,6 @@ const cortanexBISystem = {
   description: 'A comprehensive business intelligence platform that combines executive analytics, AI-powered insights, sales performance management, workforce intelligence, and multi-tenant administration into one cohesive system.',
   icon: BarChart3,
   gradient: 'from-primary to-secondary',
-  // Placeholder screenshots - replace with actual screenshots
   screenshots: [
     'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format',
     'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format',
@@ -116,6 +117,120 @@ const cortanexBISystem = {
   ]
 };
 
+// PRODUCTION HUB System Data
+const productionHubSystem = {
+  name: 'PRODUCTION HUB',
+  tagline: 'Enterprise Manufacturing Management Platform',
+  description: 'A comprehensive manufacturing execution system that provides real-time production monitoring, workflow automation, resource management, and AI-powered analytics for modern factories and production facilities.',
+  icon: Factory,
+  gradient: 'from-orange-500 to-red-500',
+  screenshots: [
+    'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&auto=format',
+    'https://images.unsplash.com/photo-1565043666747-69f6646db940?w=800&auto=format',
+    'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&auto=format',
+    'https://images.unsplash.com/photo-1562408590-e32931084e23?w=800&auto=format',
+    'https://images.unsplash.com/photo-1581092162384-8987c1d64926?w=800&auto=format',
+  ],
+  categories: [
+    {
+      icon: Factory,
+      title: '1. Production Operations',
+      gradient: 'from-orange-500 to-red-500',
+      features: [
+        { name: 'Production Line Management', description: 'Create, configure, and manage multiple production lines with capacity targets' },
+        { name: 'Manager Assignment', description: 'Assign managers and track operational status (active/inactive/maintenance)' },
+        { name: 'Real-time Progress Monitoring', description: 'Live production progress tracking across all lines' },
+        { name: 'Section Management', description: 'Organize production lines into logical sections with capacity and resource allocation' },
+        { name: 'Section Performance Metrics', description: 'Track section-level performance and efficiency metrics' },
+        { name: 'Station Management', description: 'Physical workstation configuration with multi-workflow assignment' },
+        { name: 'Dynamic Workflow Ordering', description: 'Configure workflow sequencing and status tracking per station' },
+      ]
+    },
+    {
+      icon: Cog,
+      title: '2. Workflow Engine',
+      gradient: 'from-blue-500 to-cyan-500',
+      features: [
+        { name: 'Automated Steps', description: 'Configure machine-driven operations with duration parameters and hardware/software resources' },
+        { name: 'Manual Steps', description: 'Define human-operator tasks with skill requirements and time estimation' },
+        { name: 'Semi-Automated Steps', description: 'Hybrid human-machine operations with coordinated resource allocation' },
+        { name: 'Visual Workflow Builder', description: 'Drag-and-drop workflow design with step sequencing and dependencies' },
+        { name: 'Workflow-to-Station Assignment', description: 'Assign workflows to specific stations with resource allocation per step' },
+      ]
+    },
+    {
+      icon: Monitor,
+      title: '3. Real-Time Monitoring & Intelligence',
+      gradient: 'from-green-500 to-emerald-500',
+      features: [
+        { name: 'Live Production Feed', description: 'Real-time event streaming with categorization (start/complete/error)' },
+        { name: 'Machine Status Dashboard', description: 'Real-time machine health, efficiency tracking, and output metrics' },
+        { name: 'Critical Alerts System', description: 'Severity-based classification with acknowledgment and resolution workflow' },
+        { name: 'Bottleneck Detection', description: 'Automatic identification with impact assessment and delay estimation' },
+        { name: 'Production Performance Analytics', description: 'Efficiency trends, target vs actual comparison, and quality rate tracking' },
+      ]
+    },
+    {
+      icon: Wrench,
+      title: '4. Resource Management',
+      gradient: 'from-purple-500 to-pink-500',
+      features: [
+        { name: 'Hardware Asset Management', description: 'Inventory tracking with IP address, protocol configuration, and warranty tracking' },
+        { name: 'Software Asset Management', description: 'Version tracking, license management, and deployment status' },
+        { name: 'Operator Management', description: 'Operator profiles, skill sets, certification tracking, and performance monitoring' },
+        { name: 'Workstation Assignment', description: 'Dynamic operator-to-workstation assignment based on skills' },
+      ]
+    },
+    {
+      icon: CalendarDays,
+      title: '5. Employee Portal',
+      gradient: 'from-indigo-500 to-violet-500',
+      features: [
+        { name: 'Shift Scheduling', description: 'Shift pattern configuration with employee assignment and conflict detection' },
+        { name: 'Attendance Management', description: 'Clock-in/clock-out tracking with history and exception handling' },
+        { name: 'No-Pay Roles & Time Tracking', description: 'Unpaid leave tracking with approval workflows and reporting' },
+        { name: 'Reports & Analytics', description: 'Attendance reports, performance reports, and custom report generation' },
+        { name: 'Access Control', description: 'Role-based permissions with department-based access and audit logging' },
+      ]
+    },
+    {
+      icon: Search,
+      title: '6. Data & Compliance',
+      gradient: 'from-teal-500 to-cyan-500',
+      features: [
+        { name: 'Traceability System', description: 'Unique item identifier tracking with full production journey visibility' },
+        { name: 'Step-by-Step Audit Trail', description: 'Station-level tracking with compliance documentation' },
+        { name: 'Standalone Auditor Access', description: 'Secure access portal for external auditors' },
+        { name: 'Database API Portal', description: 'Schema visualization with REST API endpoint management' },
+        { name: 'Query Interface', description: 'Data query interface with export capabilities' },
+      ]
+    },
+    {
+      icon: Bot,
+      title: '7. AI-Powered Features',
+      gradient: 'from-primary to-secondary',
+      features: [
+        { name: 'AI Assistant', description: 'Natural language queries for operational insights and data analysis' },
+        { name: 'Contextual Recommendations', description: '24/7 AI-powered suggestions and assistance' },
+        { name: 'Predictive Insights', description: 'Trend analysis and anomaly detection for proactive management' },
+        { name: 'Performance Optimization', description: 'AI-driven suggestions for improving production efficiency' },
+      ]
+    },
+    {
+      icon: LayoutDashboard,
+      title: '8. Platform Infrastructure',
+      gradient: 'from-gray-500 to-slate-600',
+      features: [
+        { name: 'Multi-Dashboard Architecture', description: 'Employee, Factory, and Executive dashboards for different user roles' },
+        { name: 'Notification System', description: 'In-app notifications with alert escalation and event-based triggers' },
+        { name: 'User Profile Management', description: 'Profile customization, preferences, and activity history' },
+        { name: 'Modular Architecture', description: 'Scalable design supporting growth from SMB to enterprise' },
+        { name: 'Third-Party Integration', description: 'Database API enables seamless connectivity with external systems' },
+      ]
+    },
+  ]
+};
+
 const Portfolio = () => {
   const pageRef = useRef<HTMLDivElement>(null);
 
@@ -204,6 +319,13 @@ const Portfolio = () => {
       <section className="portfolio-section py-24 px-4">
         <div className="max-w-6xl mx-auto">
           <SystemCard {...cortanexBISystem} />
+        </div>
+      </section>
+
+      {/* PRODUCTION HUB System */}
+      <section className="portfolio-section py-24 px-4 bg-gradient-to-b from-card/30 to-background">
+        <div className="max-w-6xl mx-auto">
+          <SystemCard {...productionHubSystem} />
         </div>
       </section>
 
