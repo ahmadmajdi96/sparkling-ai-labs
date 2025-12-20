@@ -6,7 +6,8 @@ import {
   Sparkles, LineChart, FileText, Target, Clock, Zap, Database, Settings,
   Factory, Cog, Monitor, AlertTriangle, Wrench, HardDrive, User, 
   CalendarDays, ClipboardCheck, DollarSign, Key, Search, LayoutDashboard, Bell,
-  Truck, MapPin, Package, Smartphone, Star, Lock, Map, Route
+  Truck, MapPin, Package, Smartphone, Star, Lock, Map, Route,
+  Gauge, Calendar, CheckSquare, ShieldCheck, BarChart2, Palette
 } from 'lucide-react';
 import { SystemCard } from '@/components/portfolio/SystemCard';
 import { Navbar } from '@/components/Navbar';
@@ -380,6 +381,146 @@ const deliveryManagementSystem = {
   ]
 };
 
+// MAINTENANCE MANAGEMENT System Data
+const maintenanceManagementSystem = {
+  name: 'MAINTENANCE HUB',
+  tagline: 'Machine & Station Maintenance Management System',
+  description: 'A comprehensive maintenance management platform featuring real-time equipment monitoring, predictive maintenance scheduling, safety compliance tracking, and AI-powered analytics for industrial operations.',
+  icon: Wrench,
+  gradient: 'from-amber-500 to-yellow-500',
+  screenshots: [
+    'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&auto=format',
+    'https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=800&auto=format',
+    'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&auto=format',
+    'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?w=800&auto=format',
+    'https://images.unsplash.com/photo-1565043666747-69f6646db940?w=800&auto=format',
+  ],
+  categories: [
+    {
+      icon: Gauge,
+      title: '1. Dashboard & Overview',
+      gradient: 'from-amber-500 to-yellow-500',
+      features: [
+        { name: 'Real-time KPI Cards', description: 'Overall Equipment Effectiveness, MTBF, Scheduled Compliance, Active Alerts' },
+        { name: 'Recent Activity Feed', description: 'Timestamped events and maintenance updates' },
+        { name: 'Upcoming Maintenance Calendar', description: 'Calendar view of scheduled maintenance tasks' },
+        { name: 'Machine Status Distribution', description: 'Visual overview of equipment status across facility' },
+        { name: 'Quick-Access Navigation', description: 'Fast access to all maintenance modules' },
+      ]
+    },
+    {
+      icon: Factory,
+      title: '2. Asset Management',
+      gradient: 'from-blue-500 to-cyan-500',
+      features: [
+        { name: 'Machine Registry', description: 'Complete registry with unique IDs, location, and department tracking' },
+        { name: 'Technical Specifications', description: 'Database of technical specs for all equipment' },
+        { name: 'Status Monitoring', description: 'Track Operational, Maintenance, Warning, and Offline states' },
+        { name: 'Utilization Tracking', description: 'Percentage-based utilization monitoring per asset' },
+        { name: 'MTBF per Asset', description: 'Mean Time Between Failures tracking for each machine' },
+        { name: 'Maintenance Date Tracking', description: 'Last and next maintenance date for all assets' },
+        { name: 'Search & Filter', description: 'Advanced search with visual priority indicators' },
+      ]
+    },
+    {
+      icon: Calendar,
+      title: '3. Maintenance Scheduling',
+      gradient: 'from-green-500 to-emerald-500',
+      features: [
+        { name: 'Preventive Maintenance', description: 'Scheduled maintenance before failures occur' },
+        { name: 'Predictive Maintenance', description: 'AI-driven predictions for optimal maintenance timing' },
+        { name: 'Condition-Based Maintenance', description: 'Trigger maintenance based on equipment conditions' },
+        { name: 'Autonomous Maintenance', description: 'Operator-driven daily maintenance tasks' },
+        { name: 'Corrective Maintenance', description: 'Reactive maintenance for equipment failures' },
+        { name: 'Prescriptive Maintenance', description: 'AI recommendations for maintenance actions' },
+        { name: 'Flexible Scheduling', description: 'Daily, Weekly, Monthly, Quarterly, Annual frequency options' },
+        { name: 'Technician Assignment', description: 'Task assignment with priority levels (Critical, High, Medium, Low)' },
+        { name: 'Overdue Task Alerts', description: 'Automatic alerts for overdue maintenance tasks' },
+      ]
+    },
+    {
+      icon: CheckSquare,
+      title: '4. Inspection & Logging',
+      gradient: 'from-violet-500 to-purple-500',
+      features: [
+        { name: 'Digital Inspection Checklists', description: 'Mobile-friendly digital checklists for inspections' },
+        { name: 'Safety Equipment Checks', description: 'Verify safety equipment status and compliance' },
+        { name: 'Operational Parameters', description: 'Monitor and log operational parameters' },
+        { name: 'Calibration Verification', description: 'Track calibration status and schedules' },
+        { name: 'Lubrication Points', description: 'Document lubrication checks and maintenance' },
+        { name: 'Electrical Systems', description: 'Inspect and log electrical system status' },
+        { name: 'Pass/Fail/N/A Status', description: 'Status per checklist item with notes documentation' },
+        { name: 'Compliance Percentage', description: 'Automatic calculation of inspection compliance rates' },
+      ]
+    },
+    {
+      icon: ShieldCheck,
+      title: '5. Safety & Compliance',
+      gradient: 'from-red-500 to-rose-500',
+      features: [
+        { name: 'Lockout-Tagout (LOTO)', description: 'Active procedure tracking with step-by-step workflows' },
+        { name: 'Isolation Point Documentation', description: 'Document all isolation points with authorized personnel' },
+        { name: 'ISO 55001 Compliance', description: 'Asset Management standard compliance tracking' },
+        { name: 'ISO 14224 Support', description: 'Petroleum industry data collection standards' },
+        { name: 'ISO 13849 Machine Safety', description: 'Machine safety compliance monitoring' },
+        { name: 'ISO 9001 Quality', description: 'Quality management system integration' },
+        { name: 'OSHA Regulations', description: 'Occupational safety compliance tracking' },
+        { name: 'Document Storage', description: 'Secure storage and retrieval of compliance documents' },
+        { name: 'Audit Trail', description: 'Complete logging of all safety-related actions' },
+      ]
+    },
+    {
+      icon: BarChart2,
+      title: '6. Reports & Analytics',
+      gradient: 'from-indigo-500 to-blue-500',
+      features: [
+        { name: 'MTBF Trend Analysis', description: 'Track Mean Time Between Failures over time' },
+        { name: 'MTTR Tracking', description: 'Monitor Mean Time To Repair metrics' },
+        { name: 'Uptime Percentages', description: 'Machine uptime tracking and analysis' },
+        { name: 'Downtime Analysis', description: 'Breakdown of downtime by cause' },
+        { name: 'Task Distribution', description: 'Maintenance task distribution by type' },
+        { name: 'Compliance Scoring', description: 'Track compliance scores over time' },
+        { name: 'Work Order Completion', description: 'Monitor work order completion rates' },
+        { name: 'Visual Analytics', description: 'Line charts, bar charts, pie charts, and trend comparisons' },
+        { name: 'AI-Powered Assistant', description: 'Natural language queries with predictive insights' },
+      ]
+    },
+    {
+      icon: Users,
+      title: '7. Administration & Access Control',
+      gradient: 'from-gray-500 to-slate-600',
+      features: [
+        { name: 'Role-Based Access', description: 'Admin, Supervisor, and Technician roles' },
+        { name: 'User Management', description: 'Add, edit, and manage user accounts' },
+        { name: 'Permission Configuration', description: 'Fine-grained permission settings per role' },
+        { name: 'Audit Logging', description: 'Track all user actions and system changes' },
+      ]
+    },
+    {
+      icon: Lock,
+      title: '8. Authentication',
+      gradient: 'from-primary to-secondary',
+      features: [
+        { name: 'Secure Login/Logout', description: 'Secure authentication system' },
+        { name: 'Session Management', description: 'Automatic session timeout and management' },
+        { name: 'Password Policies', description: 'Configurable password strength requirements' },
+      ]
+    },
+    {
+      icon: Palette,
+      title: '9. User Experience',
+      gradient: 'from-pink-500 to-rose-500',
+      features: [
+        { name: 'Industrial-Themed Interface', description: 'Purpose-built design for manufacturing environments' },
+        { name: 'Tablet-Optimized Design', description: 'Responsive design optimized for tablet use on shop floor' },
+        { name: 'Shop-Floor Navigation', description: 'Easy navigation designed for industrial workers' },
+        { name: 'Color-Coded Indicators', description: 'Visual status indicators for quick recognition' },
+        { name: 'Toast Notifications', description: 'Real-time feedback for all user actions' },
+      ]
+    },
+  ]
+};
+
 const Portfolio = () => {
   const pageRef = useRef<HTMLDivElement>(null);
 
@@ -482,6 +623,13 @@ const Portfolio = () => {
       <section className="portfolio-section py-24 px-4">
         <div className="max-w-6xl mx-auto">
           <SystemCard {...deliveryManagementSystem} />
+        </div>
+      </section>
+
+      {/* MAINTENANCE HUB System */}
+      <section className="portfolio-section py-24 px-4 bg-gradient-to-b from-card/30 to-background">
+        <div className="max-w-6xl mx-auto">
+          <SystemCard {...maintenanceManagementSystem} />
         </div>
       </section>
 
