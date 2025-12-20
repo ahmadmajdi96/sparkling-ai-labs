@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from '@/components/ui/button';
@@ -10,63 +10,15 @@ import {
   Workflow, Database, Cloud, Lock,
   CheckCircle2, Sparkles, BarChart3, Settings,
   Users, Award, Lightbulb, Heart, Briefcase,
-  LineChart, Package, CreditCard, FileText, Bot,
-  Download, Loader2
+  LineChart, Package, CreditCard, FileText, Bot
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import html2pdf from 'html2pdf.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const CompanyProfile = () => {
   const pageRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
-
-  const handleDownloadPdf = async () => {
-    if (!contentRef.current || isGeneratingPdf) return;
-
-    setIsGeneratingPdf(true);
-
-    const element = contentRef.current;
-    const originalScrollY = window.scrollY;
-
-    const opt = {
-      margin: 0,
-      filename: 'Cortanex-AI-Company-Profile.pdf',
-      image: { type: 'png' as const, quality: 1 },
-      html2canvas: {
-        scale: 2,
-        useCORS: true,
-        allowTaint: true,
-        backgroundColor: null,
-        scrollX: 0,
-        scrollY: 0,
-        logging: false,
-        onclone: (clonedDoc: Document) => {
-          // Ensure identical theme background in the cloned DOM
-          clonedDoc.documentElement.style.background = 'hsl(var(--background))';
-          clonedDoc.body.style.background = 'hsl(var(--background))';
-        },
-      },
-      jsPDF: { unit: 'mm' as const, format: 'a4' as const, orientation: 'portrait' as const },
-      pagebreak: { mode: ['css', 'legacy'] as ('css' | 'legacy')[] },
-    };
-
-    try {
-      // Capture from top to avoid "blank pages" due to current scroll position
-      window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
-      await new Promise((r) => setTimeout(r, 50));
-
-      await html2pdf().set(opt).from(element).save();
-    } catch (error) {
-      console.error('Error generating PDF:', error);
-    } finally {
-      window.scrollTo({ top: originalScrollY, behavior: 'instant' as ScrollBehavior });
-      setIsGeneratingPdf(false);
-    }
-  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -319,28 +271,6 @@ export const CompanyProfile = () => {
 
   return (
     <div ref={pageRef} className="min-h-screen bg-background">
-      {/* Fixed Download Button */}
-      <div className="fixed top-6 right-6 z-50" data-html2pdf-ignore="true">
-        <Button 
-          onClick={handleDownloadPdf}
-          disabled={isGeneratingPdf}
-          className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-primary-foreground shadow-lg shadow-primary/25"
-        >
-          {isGeneratingPdf ? (
-            <>
-              <Loader2 className="w-4 h-4 animate-spin" />
-              Generating...
-            </>
-          ) : (
-            <>
-              <Download className="w-4 h-4" />
-              Download PDF
-            </>
-          )}
-        </Button>
-      </div>
-
-      <div ref={contentRef} data-pdf-content>
       {/* Cover / Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Effects */}
@@ -876,7 +806,6 @@ export const CompanyProfile = () => {
         </p>
         </div>
       </footer>
-      </div>
     </div>
   );
 };
