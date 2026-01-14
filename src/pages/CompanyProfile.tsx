@@ -3,6 +3,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from '@/components/ui/button';
 import { Footer } from '@/components/Footer';
+import { Navbar } from '@/components/Navbar';
+import { WebGLBackground } from '@/components/WebGLBackground';
 import { 
   Brain, Zap, Target, Layers, Cpu, Globe, 
   Clock, Shield, TrendingUp, ArrowRight, 
@@ -307,7 +309,9 @@ export const CompanyProfile = () => {
   ];
 
   return (
-    <div ref={pageRef} className="min-h-screen bg-background">
+    <div ref={pageRef} className="min-h-screen bg-background relative">
+      <WebGLBackground />
+      <Navbar />
       {/* Cover / Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Effects */}

@@ -16,6 +16,7 @@ import {
 import { SystemCard } from '@/components/portfolio/SystemCard';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
+import { WebGLBackground } from '@/components/WebGLBackground';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -996,7 +997,8 @@ const Portfolio = () => {
   };
 
   return (
-    <div ref={pageRef} className="min-h-screen bg-background">
+    <div ref={pageRef} className="min-h-screen bg-background relative">
+      <WebGLBackground />
       <Navbar />
 
       {/* Hero Section */}

@@ -13,6 +13,8 @@ const navLinks = [
   { to: '/solutions', label: 'Solutions' },
   { to: '/industries', label: 'Industries' },
   { to: '/portfolio', label: 'Portfolio' },
+  { to: '/company-profile', label: 'Company Profile' },
+  { to: '/blog', label: 'Blog' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
 ];
@@ -48,8 +50,8 @@ export const Navbar = () => {
       >
         <div className="container mx-auto flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="p-1 rounded-lg bg-gradient-to-br from-primary/10 to-secondary/10 group-hover:from-primary/20 group-hover:to-secondary/20 transition-all">
-              <img src={logoImage} alt="CortaNex AI" className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
+            <div className="p-1 rounded-lg bg-card/80 border border-primary/20 group-hover:border-primary/40 transition-all shadow-lg">
+              <img src={logoImage} alt="CortaNex AI" className="w-9 h-9 sm:w-11 sm:h-11 object-contain drop-shadow-[0_0_8px_rgba(0,212,255,0.5)]" />
             </div>
             <div className="flex flex-col leading-none">
               <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
