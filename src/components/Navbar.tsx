@@ -3,7 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from './ui/button';
-import { Cpu, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import logoImage from '@/assets/logo.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -47,8 +48,8 @@ export const Navbar = () => {
       >
         <div className="container mx-auto flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="p-2 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 group-hover:from-primary/30 group-hover:to-secondary/30 transition-all">
-              <Cpu className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+            <div className="p-1 rounded-lg bg-gradient-to-br from-primary/10 to-secondary/10 group-hover:from-primary/20 group-hover:to-secondary/20 transition-all">
+              <img src={logoImage} alt="CortaNex AI" className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
             </div>
             <div className="flex flex-col leading-none">
               <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
