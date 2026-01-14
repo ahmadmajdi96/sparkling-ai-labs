@@ -9,7 +9,9 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src={logoImage} alt="CortaNex AI Logo" className="w-8 h-8 object-contain" />
+              <div className="p-1 rounded-lg bg-card/80 border border-primary/20 shadow-lg">
+                <img src={logoImage} alt="CortaNex AI Logo" className="w-9 h-9 object-contain drop-shadow-[0_0_8px_rgba(0,212,255,0.5)]" />
+              </div>
               <span className="font-bold text-xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                 CortaNex
               </span>

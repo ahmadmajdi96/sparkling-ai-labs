@@ -6,19 +6,43 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
+import { supabase } from '@/integrations/supabase/client';
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: '',
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast.success('Message transmitted successfully!');
-    setIsSubmitting(false);
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: formData,
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      toast.success('Message sent successfully! We will get back to you soon.');
+      setFormData({ name: '', email: '', company: '', message: '' });
+    } catch (error: any) {
+      console.error('Error sending message:', error);
+      toast.error('Failed to send message. Please try again or email us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -35,7 +59,7 @@ const Contact = () => {
               Contact
             </h1>
             <p className="text-lg text-muted-foreground">
-              Connect with the neural network and begin your transformation
+              Connect with us and begin your AI transformation journey
             </p>
           </div>
 
@@ -45,6 +69,9 @@ const Contact = () => {
                 <label className="block text-sm font-medium mb-2">Name</label>
                 <Input
                   type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   required
                   className="bg-background/50 border-primary/30 focus:border-primary"
                   placeholder="Enter your name"
@@ -55,6 +82,9 @@ const Contact = () => {
                 <label className="block text-sm font-medium mb-2">Email</label>
                 <Input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   required
                   className="bg-background/50 border-primary/30 focus:border-primary"
                   placeholder="Enter your email"
@@ -65,6 +95,9 @@ const Contact = () => {
                 <label className="block text-sm font-medium mb-2">Company</label>
                 <Input
                   type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
                   className="bg-background/50 border-primary/30 focus:border-primary"
                   placeholder="Enter your company"
                 />
@@ -73,6 +106,9 @@ const Contact = () => {
               <div>
                 <label className="block text-sm font-medium mb-2">Message</label>
                 <Textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   required
                   rows={6}
                   className="bg-background/50 border-primary/30 focus:border-primary resize-none"
@@ -85,9 +121,13 @@ const Contact = () => {
                 disabled={isSubmitting}
                 className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-glow"
               >
-                {isSubmitting ? 'Transmitting...' : 'Transmit Message'}
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </Button>
             </form>
+          </div>
+
+          <div className="mt-8 text-center text-muted-foreground">
+            <p>Or reach out directly at <a href="mailto:a.salameh@cortanexai.com" className="text-primary hover:underline">a.salameh@cortanexai.com</a></p>
           </div>
         </div>
       </main>
