@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from '@/components/ui/button';
+import { Footer } from '@/components/Footer';
 import { 
   Brain, Zap, Target, Layers, Cpu, Globe, 
   Clock, Shield, TrendingUp, ArrowRight, 
@@ -823,25 +824,7 @@ export const CompanyProfile = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 px-4 border-t border-border/50">
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-              <Brain className="w-5 h-5 text-primary-foreground" />
-            </div>
-            <span className="text-lg font-orbitron font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              CORTANEX AI
-            </span>
-          </div>
-          <p className="text-muted-foreground text-sm mb-4">
-            Intelligent Systems. Delivered at Speed.
-          </p>
-          <p className="text-muted-foreground/60 text-xs">
-          © {new Date().getFullYear()} Cortanex AI. All rights reserved.
-        </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
