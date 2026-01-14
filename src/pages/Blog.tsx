@@ -149,7 +149,7 @@ const Blog = () => {
   }, []);
 
   return (
-    <div ref={pageRef} className="min-h-screen bg-background relative">
+    <div ref={pageRef} className="min-h-screen relative">
       <WebGLBackground />
       <Navbar />
       

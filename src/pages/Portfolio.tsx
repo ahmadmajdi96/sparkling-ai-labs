@@ -997,18 +997,17 @@ const Portfolio = () => {
   };
 
   return (
-    <div ref={pageRef} className="min-h-screen bg-background relative">
+    <div ref={pageRef} className="min-h-screen relative">
       <WebGLBackground />
       <Navbar />
 
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-20">
-        {/* Background Effects */}
+        {/* Background Effects - Semi-transparent to show stars */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-background via-card to-background" />
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/10 rounded-full blur-3xl" />
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-float" />
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl" />
         </div>
 
         {/* Grid Pattern */}
@@ -1058,7 +1057,7 @@ const Portfolio = () => {
       </section>
 
       {/* Sticky Navigation */}
-      <nav className="sticky top-16 z-40 bg-background/95 backdrop-blur-xl border-b border-primary/20 shadow-lg shadow-background/50">
+      <nav className="sticky top-16 z-40 bg-background/80 backdrop-blur-xl border-b border-primary/20 shadow-lg shadow-background/50">
         <div className="max-w-6xl mx-auto px-4 py-3">
           <div className="relative flex items-center">
             {/* Scroll Left Button */}
@@ -1140,7 +1139,7 @@ const Portfolio = () => {
       </section>
 
       {/* MAINTENANCE HUB System */}
-      <section id="maintenance-hub" className="portfolio-section py-24 px-4 bg-gradient-to-b from-card/30 to-background scroll-mt-32">
+      <section id="maintenance-hub" className="portfolio-section py-24 px-4 scroll-mt-32">
         <div className="max-w-6xl mx-auto">
           <SystemCard {...maintenanceManagementSystem} />
         </div>
@@ -1154,7 +1153,7 @@ const Portfolio = () => {
       </section>
 
       {/* CORTANEX MANAGEMENT PORTAL System */}
-      <section id="management-portal" className="portfolio-section py-24 px-4 bg-gradient-to-b from-card/30 to-background scroll-mt-32">
+      <section id="management-portal" className="portfolio-section py-24 px-4 scroll-mt-32">
         <div className="max-w-6xl mx-auto">
           <SystemCard {...managementPortalSystem} />
         </div>
@@ -1168,7 +1167,7 @@ const Portfolio = () => {
       </section>
 
       {/* More Systems Coming Soon */}
-      <section className="portfolio-section py-24 px-4 bg-gradient-to-b from-card/50 to-background">
+      <section className="portfolio-section py-24 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 mb-6">
             <Zap className="w-4 h-4 text-secondary" />

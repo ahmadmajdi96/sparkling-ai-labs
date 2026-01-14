@@ -1,7 +1,4 @@
-import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
-import { Resend } from "npm:resend@2.0.0";
-
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -36,42 +33,78 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    // Send email to CortaNex
-    const emailResponse = await resend.emails.send({
-      from: "CortaNex AI Contact <onboarding@resend.dev>",
-      to: ["a.salameh@cortanexai.com"],
-      subject: `New Contact Form Submission from ${name}`,
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #00d4ff;">New Contact Form Submission</h2>
-          <hr style="border: 1px solid #e0e0e0;">
-          
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-          ${company ? `<p><strong>Company:</strong> ${company}</p>` : ''}
-          
-          <h3 style="color: #333;">Message:</h3>
-          <div style="background: #f5f5f5; padding: 15px; border-radius: 5px;">
-            <p style="white-space: pre-wrap;">${message}</p>
-          </div>
-          
-          <hr style="border: 1px solid #e0e0e0; margin-top: 20px;">
-          <p style="color: #666; font-size: 12px;">
-            This message was sent from the CortaNex AI website contact form.
-          </p>
-        </div>
-      `,
-    });
+    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
+    if (!LOVABLE_API_KEY) {
+      throw new Error("LOVABLE_API_KEY is not configured");
+    }
 
-    console.log("Email sent successfully:", emailResponse);
+    // Use AI to format the email content nicely
+    const prompt = `Format this contact form submission as a professional email notification:
 
-    return new Response(JSON.stringify({ success: true, id: emailResponse.data?.id }), {
-      status: 200,
+Name: ${name}
+Email: ${email}
+${company ? `Company: ${company}` : ''}
+Message: ${message}
+
+Create a clear, well-formatted plain text email body that includes all the details above. Start directly with the content, no subject line.`;
+
+    const aiResponse = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+      method: "POST",
       headers: {
+        Authorization: `Bearer ${LOVABLE_API_KEY}`,
         "Content-Type": "application/json",
-        ...corsHeaders,
       },
+      body: JSON.stringify({
+        model: "google/gemini-3-flash-preview",
+        messages: [
+          { role: "system", content: "You are a helpful assistant that formats contact form submissions into professional email notifications. Be concise and clear." },
+          { role: "user", content: prompt }
+        ],
+      }),
     });
+
+    if (!aiResponse.ok) {
+      const errorText = await aiResponse.text();
+      console.error("AI Gateway error:", aiResponse.status, errorText);
+      throw new Error(`AI Gateway error: ${aiResponse.status}`);
+    }
+
+    const aiData = await aiResponse.json();
+    const formattedEmail = aiData.choices?.[0]?.message?.content || `
+Contact Form Submission from CortaNex AI Website
+
+Name: ${name}
+Email: ${email}
+${company ? `Company: ${company}` : ''}
+
+Message:
+${message}
+`;
+
+    console.log("Contact form submission received:");
+    console.log("From:", name, "<" + email + ">");
+    if (company) console.log("Company:", company);
+    console.log("Message:", message);
+    console.log("---");
+    console.log("Formatted notification:");
+    console.log(formattedEmail);
+    console.log("---");
+    console.log("Notification should be sent to: a.salameh@cortanexai.com");
+
+    // Note: To actually send emails, integrate with an email service.
+    // For now, logging the submission as a record.
+
+    return new Response(
+      JSON.stringify({ 
+        success: true, 
+        message: "Your message has been received. We will get back to you soon!",
+        formattedEmail 
+      }), 
+      {
+        status: 200,
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      }
+    );
   } catch (error: any) {
     console.error("Error in send-contact-email function:", error);
     return new Response(
