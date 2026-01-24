@@ -12,6 +12,9 @@ import CompanyProfile from "./pages/CompanyProfile";
 import Portfolio from "./pages/Portfolio";
 import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminSystemDetail from "./pages/admin/AdminSystemDetail";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +34,10 @@ const App = () => (
           <Route path="/company-profile" element={<CompanyProfile />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/blog" element={<Blog />} />
+          {/* Admin Portal Routes - Not linked from main website */}
+          <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/system/:systemId" element={<AdminSystemDetail />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -14,7 +14,177 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      admin_users: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          password_hash: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          password_hash: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          password_hash?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      portfolio_categories: {
+        Row: {
+          created_at: string
+          display_order: number
+          gradient: string
+          icon: string
+          id: string
+          system_id: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          display_order?: number
+          gradient?: string
+          icon: string
+          id?: string
+          system_id: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          display_order?: number
+          gradient?: string
+          icon?: string
+          id?: string
+          system_id?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "portfolio_categories_system_id_fkey"
+            columns: ["system_id"]
+            isOneToOne: false
+            referencedRelation: "portfolio_systems"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      portfolio_features: {
+        Row: {
+          category_id: string
+          created_at: string
+          description: string
+          display_order: number
+          id: string
+          name: string
+        }
+        Insert: {
+          category_id: string
+          created_at?: string
+          description: string
+          display_order?: number
+          id?: string
+          name: string
+        }
+        Update: {
+          category_id?: string
+          created_at?: string
+          description?: string
+          display_order?: number
+          id?: string
+          name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "portfolio_features_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "portfolio_categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      portfolio_screenshots: {
+        Row: {
+          created_at: string
+          display_order: number
+          id: string
+          image_url: string
+          system_id: string
+        }
+        Insert: {
+          created_at?: string
+          display_order?: number
+          id?: string
+          image_url: string
+          system_id: string
+        }
+        Update: {
+          created_at?: string
+          display_order?: number
+          id?: string
+          image_url?: string
+          system_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "portfolio_screenshots_system_id_fkey"
+            columns: ["system_id"]
+            isOneToOne: false
+            referencedRelation: "portfolio_systems"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      portfolio_systems: {
+        Row: {
+          created_at: string
+          description: string
+          display_order: number
+          gradient: string
+          icon: string
+          id: string
+          is_active: boolean
+          name: string
+          tagline: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          display_order?: number
+          gradient?: string
+          icon: string
+          id?: string
+          is_active?: boolean
+          name: string
+          tagline: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          display_order?: number
+          gradient?: string
+          icon?: string
+          id?: string
+          is_active?: boolean
+          name?: string
+          tagline?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
