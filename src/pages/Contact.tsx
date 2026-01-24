@@ -22,13 +22,17 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      const { data, error } = await supabase.functions.invoke('send-contact-email', {
-        body: formData,
-      });
+      // Insert directly into contact_messages table
+      const { error } = await supabase
+        .from('contact_messages')
+        .insert({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company || null,
+          message: formData.message,
+        });
 
-      if (error) {
-        throw error;
-      }
+      if (error) throw error;
 
       toast.success('Message sent successfully! We will get back to you soon.');
       setFormData({ name: '', email: '', company: '', message: '' });

@@ -404,6 +404,97 @@ serve(async (req) => {
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
+
+    // Contact messages actions
+    if (action === 'get_messages') {
+      const { data: messages, error } = await supabase
+        .from('contact_messages')
+        .select('*')
+        .order('created_at', { ascending: false });
+      
+      if (error) throw error;
+      return new Response(
+        JSON.stringify({ messages }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    if (action === 'mark_message_read') {
+      const { id } = data;
+      const { error } = await supabase
+        .from('contact_messages')
+        .update({ is_read: true })
+        .eq('id', id);
+      
+      if (error) throw error;
+      return new Response(
+        JSON.stringify({ success: true }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    if (action === 'delete_message') {
+      const { id } = data;
+      const { error } = await supabase
+        .from('contact_messages')
+        .delete()
+        .eq('id', id);
+      
+      if (error) throw error;
+      return new Response(
+        JSON.stringify({ success: true }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Get full portfolio data for public display
+    if (action === 'get_portfolio') {
+      const { data: systems, error: sysError } = await supabase
+        .from('portfolio_systems')
+        .select('*')
+        .eq('is_active', true)
+        .order('display_order');
+      
+      if (sysError) throw sysError;
+
+      // Get all data in parallel
+      const systemIds = systems.map(s => s.id);
+      
+      const [screenshotsRes, categoriesRes] = await Promise.all([
+        supabase
+          .from('portfolio_screenshots')
+          .select('*')
+          .in('system_id', systemIds)
+          .order('display_order'),
+        supabase
+          .from('portfolio_categories')
+          .select('*, portfolio_features(*)')
+          .in('system_id', systemIds)
+          .order('display_order')
+      ]);
+
+      if (screenshotsRes.error) throw screenshotsRes.error;
+      if (categoriesRes.error) throw categoriesRes.error;
+
+      // Group data by system
+      const portfolioData = systems.map(system => ({
+        ...system,
+        screenshots: screenshotsRes.data
+          .filter(s => s.system_id === system.id)
+          .map(s => s.image_url),
+        categories: categoriesRes.data
+          .filter(c => c.system_id === system.id)
+          .map(cat => ({
+            ...cat,
+            features: cat.portfolio_features?.sort((a: any, b: any) => a.display_order - b.display_order) || []
+          }))
+      }));
+
+      return new Response(
+        JSON.stringify({ systems: portfolioData }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
     
     return new Response(
       JSON.stringify({ error: 'Unknown action' }),
