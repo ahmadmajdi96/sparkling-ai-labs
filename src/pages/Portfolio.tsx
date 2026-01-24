@@ -152,23 +152,23 @@ const Portfolio = () => {
       
       {/* Sticky Navigation */}
       {systems.length > 0 && (
-        <div className="sticky top-16 z-40 bg-background/60 backdrop-blur-xl border-b border-primary/10 shadow-lg shadow-background/20">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="relative flex items-center h-14">
+        <div className="sticky top-20 z-30 py-3">
+          <div className="max-w-4xl mx-auto px-4">
+            <div className="relative bg-card/80 backdrop-blur-xl border border-border/50 rounded-2xl shadow-2xl shadow-black/20 p-2">
               {/* Left scroll button */}
               {showLeftArrow && (
                 <button
                   onClick={() => scrollNav('left')}
-                  className="absolute left-0 z-10 h-10 w-10 flex items-center justify-center bg-gradient-to-r from-background via-background/90 to-transparent rounded-r-lg"
+                  className="absolute left-1 top-1/2 -translate-y-1/2 z-10 h-8 w-8 flex items-center justify-center bg-background/90 backdrop-blur rounded-full border border-border/50 shadow-lg hover:bg-muted transition-colors"
                 >
-                  <ChevronLeft className="w-5 h-5 text-foreground" />
+                  <ChevronLeft className="w-4 h-4 text-foreground" />
                 </button>
               )}
 
               {/* Scrollable nav container */}
               <div
                 ref={navContainerRef}
-                className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide scroll-smooth px-1 py-2"
+                className="flex items-center justify-center gap-1 overflow-x-auto scrollbar-hide scroll-smooth px-8"
                 onScroll={checkScrollArrows}
               >
                 {systems.map((system) => (
@@ -176,15 +176,24 @@ const Portfolio = () => {
                     key={system.id}
                     onClick={() => scrollToSection(system.id)}
                     className={cn(
-                      "relative flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 whitespace-nowrap",
+                      "relative flex-shrink-0 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 whitespace-nowrap",
                       activeSection === system.id
-                        ? "text-primary-foreground shadow-lg"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                        ? "text-white"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted/30"
                     )}
                   >
-                    {/* Active background */}
+                    {/* Active background with gradient */}
                     {activeSection === system.id && (
-                      <div className={`absolute inset-0 rounded-lg bg-gradient-to-r ${system.gradient} shadow-glow`} />
+                      <div 
+                        className={cn(
+                          "absolute inset-0 rounded-xl transition-all duration-300",
+                          "bg-gradient-to-r shadow-lg",
+                          system.gradient
+                        )} 
+                        style={{
+                          boxShadow: '0 4px 20px rgba(var(--primary), 0.3)'
+                        }}
+                      />
                     )}
                     <span className="relative z-10">{getShortName(system.name)}</span>
                   </button>
@@ -195,23 +204,24 @@ const Portfolio = () => {
               {showRightArrow && (
                 <button
                   onClick={() => scrollNav('right')}
-                  className="absolute right-0 z-10 h-10 w-10 flex items-center justify-center bg-gradient-to-l from-background via-background/90 to-transparent rounded-l-lg"
+                  className="absolute right-1 top-1/2 -translate-y-1/2 z-10 h-8 w-8 flex items-center justify-center bg-background/90 backdrop-blur rounded-full border border-border/50 shadow-lg hover:bg-muted transition-colors"
                 >
-                  <ChevronRight className="w-5 h-5 text-foreground" />
+                  <ChevronRight className="w-4 h-4 text-foreground" />
                 </button>
               )}
             </div>
 
             {/* Progress dots for mobile */}
-            <div className="flex justify-center gap-1 pb-2 md:hidden">
+            <div className="flex justify-center gap-1.5 mt-3 md:hidden">
               {systems.map((system) => (
-                <div
+                <button
                   key={system.id}
+                  onClick={() => scrollToSection(system.id)}
                   className={cn(
-                    "w-1.5 h-1.5 rounded-full transition-all duration-300",
+                    "h-2 rounded-full transition-all duration-300",
                     activeSection === system.id
-                      ? "w-4 bg-primary"
-                      : "bg-muted-foreground/30"
+                      ? "w-6 bg-primary"
+                      : "w-2 bg-muted-foreground/40 hover:bg-muted-foreground/60"
                   )}
                 />
               ))}
