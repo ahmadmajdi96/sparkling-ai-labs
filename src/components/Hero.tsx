@@ -46,11 +46,15 @@ export const Hero = () => {
 
         <h1
           ref={titleRef}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent leading-tight px-2"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight px-2"
         >
-          Transform Your Business
+          <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
+            CortaNex AI
+          </span>
           <br />
-          With AI Systems
+          <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-muted-foreground font-medium">
+            Transform Your Business With AI Systems
+          </span>
         </h1>
 
         <p
