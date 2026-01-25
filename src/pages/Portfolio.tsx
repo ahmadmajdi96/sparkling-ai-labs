@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ChevronUp, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
@@ -18,6 +18,8 @@ const Portfolio = () => {
   const navBarRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const animationsInitialized = useRef(false);
   
   const { systems, loading, error } = usePortfolioData();
 
@@ -46,28 +48,22 @@ const Portfolio = () => {
     }
   };
 
-  useEffect(() => {
-    if (systems.length === 0) return;
+  // Calculate scroll progress
+  const updateScrollProgress = useCallback(() => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    setScrollProgress(Math.min(100, Math.max(0, progress)));
+  }, []);
 
-    // Animate navigation bar entrance
-    if (navBarRef.current) {
-      gsap.fromTo(
-        navBarRef.current,
-        { opacity: 0, y: -30, scale: 0.95 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.6,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: navBarRef.current,
-            start: 'top 90%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
-    }
+  useEffect(() => {
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    return () => window.removeEventListener('scroll', updateScrollProgress);
+  }, [updateScrollProgress]);
+
+  useEffect(() => {
+    if (systems.length === 0 || animationsInitialized.current) return;
+    animationsInitialized.current = true;
 
     // Set up scroll tracking for each system section
     systems.forEach((system) => {
@@ -83,20 +79,20 @@ const Portfolio = () => {
       }
     });
 
-    // Animate sections on scroll
+    // Animate sections on scroll with simpler animation
     gsap.utils.toArray('.system-section').forEach((section: any) => {
       gsap.fromTo(
         section,
-        { opacity: 0, y: 60 },
+        { opacity: 0, y: 40 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
+          duration: 0.6,
           ease: 'power2.out',
           scrollTrigger: {
             trigger: section,
             start: 'top 85%',
-            toggleActions: 'play none none reverse',
+            toggleActions: 'play none none none',
           },
         }
       );
@@ -104,6 +100,7 @@ const Portfolio = () => {
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      animationsInitialized.current = false;
     };
   }, [systems]);
 
@@ -192,6 +189,14 @@ const Portfolio = () => {
           {systems.length > 0 && (
             <div className="sticky top-20 z-30 py-3 mb-12">
               <div ref={navBarRef} className="max-w-4xl mx-auto">
+                {/* Progress bar */}
+                <div className="absolute -top-1 left-0 right-0 h-1 bg-muted/30 rounded-full overflow-hidden">
+                  <div 
+                    className="h-full bg-gradient-to-r from-primary via-secondary to-accent transition-all duration-150 ease-out"
+                    style={{ width: `${scrollProgress}%` }}
+                  />
+                </div>
+
                 <div className="relative bg-card/80 backdrop-blur-xl border border-border/50 rounded-2xl shadow-2xl shadow-black/20 p-2">
                   {/* Left scroll button */}
                   {showLeftArrow && (
@@ -214,9 +219,9 @@ const Portfolio = () => {
                         key={system.id}
                         onClick={() => scrollToSection(system.id)}
                         className={cn(
-                          "relative flex-shrink-0 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 whitespace-nowrap",
+                          "relative flex-shrink-0 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 whitespace-nowrap",
                           activeSection === system.id
-                            ? "text-white"
+                            ? "text-white gradient-border-animated"
                             : "text-muted-foreground hover:text-foreground hover:bg-muted/50 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/20"
                         )}
                       >
@@ -224,12 +229,12 @@ const Portfolio = () => {
                         {activeSection === system.id && (
                           <div 
                             className={cn(
-                              "absolute inset-0 rounded-xl transition-all duration-300",
+                              "absolute inset-0 rounded-xl",
                               "bg-gradient-to-r shadow-lg",
                               system.gradient
                             )} 
                             style={{
-                              boxShadow: '0 8px 24px rgba(var(--primary), 0.4)'
+                              boxShadow: '0 8px 24px hsla(190, 100%, 50%, 0.3)'
                             }}
                           />
                         )}
@@ -256,7 +261,7 @@ const Portfolio = () => {
                       key={system.id}
                       onClick={() => scrollToSection(system.id)}
                       className={cn(
-                        "h-2 rounded-full transition-all duration-300",
+                        "h-2 rounded-full transition-all duration-200",
                         activeSection === system.id
                           ? "w-6 bg-primary"
                           : "w-2 bg-muted-foreground/40 hover:bg-muted-foreground/60"
