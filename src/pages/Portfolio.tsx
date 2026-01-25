@@ -110,8 +110,8 @@ const Portfolio = () => {
   const scrollToSection = (systemId: string) => {
     const element = sectionRefs.current[systemId];
     if (element) {
-      // Offset accounts for navbar (80px) + sticky nav bar height (~70px) + padding
-      const yOffset = -160;
+      // Offset accounts for navbar (80px) + sticky nav bar height (~70px) + extra spacing (40px)
+      const yOffset = -200;
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
@@ -217,7 +217,7 @@ const Portfolio = () => {
                           "relative flex-shrink-0 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 whitespace-nowrap",
                           activeSection === system.id
                             ? "text-white"
-                            : "text-muted-foreground hover:text-foreground hover:bg-muted/30"
+                            : "text-muted-foreground hover:text-foreground hover:bg-muted/50 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/20"
                         )}
                       >
                         {/* Active background with gradient */}
@@ -229,7 +229,7 @@ const Portfolio = () => {
                               system.gradient
                             )} 
                             style={{
-                              boxShadow: '0 4px 20px rgba(var(--primary), 0.3)'
+                              boxShadow: '0 8px 24px rgba(var(--primary), 0.4)'
                             }}
                           />
                         )}
@@ -275,7 +275,7 @@ const Portfolio = () => {
                 key={system.id}
                 id={system.id}
                 ref={(el) => (sectionRefs.current[system.id] = el)}
-                className="system-section scroll-mt-40"
+                className="system-section scroll-mt-52"
               >
                 <DynamicSystemCard system={system} />
               </section>
