@@ -1,0 +1,1 @@
+INSERT INTO public.admin_users (email, password_hash) VALUES ('admin@cortanex.com', '172fdac55beb6b9d2427c2cf13e70fc0ed53c53c92cc4522988c77b5345fd8e3') ON CONFLICT (email) DO UPDATE SET password_hash = EXCLUDED.password_hash;
