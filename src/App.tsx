@@ -38,6 +38,9 @@ const App = () => (
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/system/:systemId" element={<AdminSystemDetail />} />
+          {/* Backward-compat: old dashboard/:systemId links redirect to system detail */}
+          <Route path="/admin/dashboard/:systemId" element={<Navigate to="/admin" replace />} />
+
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
