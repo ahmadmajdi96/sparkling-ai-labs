@@ -1,6 +1,6 @@
 {
-  "image": "ghcr.io/ahmadmajdi96/cortanexai@sha256:953c0f14b823259b7a29d3e2f3406bcf235619786ba67ea7d8ab2ebed7a39382",
-  "commit": "978555a57fdc8da7e5356fd4c50ca58d25f1eba4",
+  "image": "ghcr.io/ahmadmajdi96/cortanexai@sha256:774844c5bd70e3eb49f5f81f00157b650f7a4e82d4334aa4728aa4aa4e52b2f4",
+  "commit": "a9f49e2a714c3a2fbd8af0d555f79be5803def32",
   "environment": "staging",
-  "ref": "migration-baseline"
+  "ref": "refs/tags/staging-verify-20261006-2"
 }
