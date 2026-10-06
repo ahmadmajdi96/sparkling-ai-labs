@@ -1,6 +1,6 @@
 {
-  "image": "ghcr.io/ahmadmajdi96/cortanexai@sha256:e1720294cc693ad20112f0ad941c9a44a6e7f39d3604d8facc7903ffd2d798bd",
-  "commit": "4071a7964e3581b73ba27e48368e59614edb6a9e",
+  "image": "ghcr.io/ahmadmajdi96/cortanexai@sha256:8ec0359c3aed785125a61f7488f987ec32737196f98f89b9653149da95c1479a",
+  "commit": "a9f49e2a714c3a2fbd8af0d555f79be5803def32",
   "environment": "production",
   "ref": "refs/heads/main"
 }
