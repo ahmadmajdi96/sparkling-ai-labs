@@ -1,0 +1,6 @@
+{
+  "image": "ghcr.io/ahmadmajdi96/cortanexai@sha256:953c0f14b823259b7a29d3e2f3406bcf235619786ba67ea7d8ab2ebed7a39382",
+  "commit": "978555a57fdc8da7e5356fd4c50ca58d25f1eba4",
+  "environment": "production",
+  "ref": "migration-baseline"
+}
