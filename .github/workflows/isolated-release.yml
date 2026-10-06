@@ -42,7 +42,7 @@ jobs:
           DIGEST: ${{ steps.image.outputs.digest }}
         run: |
           token=$(curl -fsSL 'https://ghcr.io/token?scope=repository:ahmadmajdi96/cortanexai:pull&service=ghcr.io' | python3 -c 'import json,sys; print(json.load(sys.stdin)["token"])')
-          curl -fsSL --head -H "Authorization: Bearer $token" -H 'Accept: application/vnd.oci.image.manifest.v1+json,application/vnd.docker.distribution.manifest.v2+json' "https://ghcr.io/v2/ahmadmajdi96/cortanexai/manifests/$DIGEST" >/dev/null
+          curl -fsSL --head -H "Authorization: Bearer $token" -H 'Accept: application/vnd.oci.image.index.v1+json,application/vnd.oci.image.manifest.v1+json,application/vnd.docker.distribution.manifest.list.v2+json,application/vnd.docker.distribution.manifest.v2+json' "https://ghcr.io/v2/ahmadmajdi96/cortanexai/manifests/$DIGEST" >/dev/null
       - name: Publish the immutable release for private controllers
         env:
           RELEASE_IMAGE: ghcr.io/ahmadmajdi96/cortanexai@${{ steps.image.outputs.digest }}
